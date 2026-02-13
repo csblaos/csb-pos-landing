@@ -6,40 +6,40 @@ import CorporateIntegrationViz from './CorporateIntegrationViz.astro';
 const { hero } = content;
 ---
 
-<section id="corporate-hero" class="relative min-h-[85vh] flex items-center pt-24 bg-white border-b border-slate-200 overflow-hidden">
+<section id="corporate-hero" class="relative min-h-[85vh] flex items-center pt-20 md:pt-24 bg-white border-b border-slate-200 overflow-hidden w-full max-w-[100vw]">
     <!-- Professional Background Pattern -->
     <div class="absolute inset-0 bg-[#f8fafc] opacity-50 pointer-events-none"></div>
     <div class="absolute right-0 top-0 w-1/3 h-full bg-slate-50 clip-path-slant hidden lg:block"></div>
 
-    <div class="max-w-7xl mx-auto px-6 w-full relative z-10 grid lg:grid-cols-2 gap-16 items-center">
-        <div class="space-y-8">
+    <div class="max-w-7xl mx-auto px-6 w-full relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="space-y-6 md:space-y-8 min-w-0">
             <!-- Trust Badge -->
-            <div class="inline-flex items-center gap-3 px-4 py-2 bg-blue-50 border border-blue-100 rounded text-blue-800 font-bold text-sm">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm1 15h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
-                <span>Enterprise Grade Solution</span>
+            <div class="inline-flex flex-wrap items-center gap-3 px-3 py-2 bg-blue-50 border border-blue-100 rounded text-blue-800 font-bold text-sm max-w-full">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="shrink-0"><path d="M12 2L1 21h22L12 2zm1 15h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+                <span class="break-words">Enterprise Grade Solution</span>
             </div>
 
-            <h1 class="text-4xl md:text-6xl font-bold text-slate-900 leading-tight">
+            <h1 class="text-3xl md:text-4xl lg:text-6xl font-bold text-slate-900 leading-tight break-all">
                 {hero.title_part1} <br/>
                 <span class="text-blue-900">{hero.title_part2}</span>
             </h1>
 
-            <p class="text-lg text-slate-600 leading-relaxed max-w-lg">
+            <p class="text-base md:text-lg text-slate-600 leading-relaxed max-w-lg break-all">
                 {hero.subtitle}
             </p>
 
-            <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                <button class="px-8 py-4 bg-blue-900 text-white font-bold rounded shadow-lg shadow-blue-900/20 hover:bg-blue-800 transition-colors flex items-center gap-2 group">
+            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 md:pt-4 w-full">
+                <button class="px-6 sm:px-8 py-4 bg-blue-900 text-white font-bold rounded shadow-lg shadow-blue-900/20 hover:bg-blue-800 transition-colors flex items-center justify-center gap-2 group w-full sm:w-auto">
                     {hero.primaryCta}
                     <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-7-7l7 7-7 7"/></svg>
                 </button>
-                <button class="px-8 py-4 bg-white text-slate-700 border border-slate-300 font-bold rounded hover:bg-slate-50 transition-colors flex items-center gap-2">
+                <button class="px-6 sm:px-8 py-4 bg-white text-slate-700 border border-slate-300 font-bold rounded hover:bg-slate-50 transition-colors flex items-center justify-center gap-2 w-full sm:w-auto">
                     <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
                     {hero.secondaryCta}
                 </button>
             </div>
             
-            <div class="flex items-center gap-8 pt-8 text-slate-500 text-sm font-semibold border-t border-slate-200">
+            <div class="flex flex-wrap items-center gap-x-4 gap-y-2 md:gap-8 pt-6 md:pt-8 text-slate-500 text-sm font-semibold border-t border-slate-200">
                 <div class="flex items-center gap-2">
                     <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                     ISO 27001 Certified
@@ -51,19 +51,20 @@ const { hero } = content;
             </div>
         </div>
 
-        <div class="relative block mt-12 lg:mt-0">
-            <div class="bg-transparent lg:bg-white lg:rounded-lg lg:shadow-2xl lg:border lg:border-slate-200 lg:p-2 lg:transform lg:rotate-1 lg:hover:rotate-0 transition-transform duration-500">
-                <div class="bg-transparent lg:bg-slate-50 lg:rounded lg:border lg:border-slate-100 h-[350px] md:h-[450px] flex items-center justify-center relative overflow-hidden">
+        <div class="relative hidden lg:block w-full max-w-full">
+            <div class="bg-white rounded-lg shadow-2xl border border-slate-200 p-2 transform rotate-1 hover:rotate-0 transition-transform duration-500 w-full">
+                <div class="bg-slate-50 rounded border border-slate-100 h-[450px] flex items-center justify-center relative overflow-hidden w-full">
                    <!-- New Connection Visualization -->
                    <CorporateIntegrationViz />
                     
-                    <div class="absolute bottom-8 right-8">
-                        <HeroToast messages={[
+                    <HeroToast 
+                        class="absolute bottom-4 right-4 lg:bottom-8 lg:right-8"
+                        messages={[
                             { title: 'ออเดอร์ใหม่!', desc: 'จาก Facebook • เมื่อสักครู่', icon: '📘' },
                             { title: 'ออเดอร์ใหม่!', desc: 'จาก WhatsApp • เมื่อสักครู่', icon: '💚' },
                             { title: 'เชื่อมต่อสำเร็จ', desc: 'ซิงค์ข้อมูลเรียบร้อยแล้ว', icon: '🔗' }
-                        ]} />
-                    </div>
+                        ]} 
+                    />
                 </div>
             </div>
         </div>

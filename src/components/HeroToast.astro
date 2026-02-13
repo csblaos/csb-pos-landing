@@ -1,15 +1,19 @@
 ---
 export interface Props {
     messages?: { title: string; desc: string; icon?: string }[];
+    class?: string;
 }
 
-const { messages = [
-    { title: 'ออเดอร์ใหม่! 💰', desc: 'จาก Facebook • เมื่อสักครู่', icon: '🛍️' },
-    { title: 'แจ้งเตือนชำระเงิน 💸', desc: 'จาก WhatsApp • 2 วินาทีที่แล้ว', icon: '💳' },
-    { title: 'ลูกค้าใหม่ทักแชท 👋', desc: 'จาก LINE OA • 1 นาทีที่แล้ว', icon: '💬' }
-] } = Astro.props;
+const { 
+    messages = [
+        { title: 'ออเดอร์ใหม่! 💰', desc: 'จาก Facebook • เมื่อสักครู่', icon: '🛍️' },
+        { title: 'แจ้งเตือนชำระเงิน 💸', desc: 'จาก WhatsApp • 2 วินาทีที่แล้ว', icon: '💳' },
+        { title: 'ลูกค้าใหม่ทักแชท 👋', desc: 'จาก LINE OA • 1 นาทีที่แล้ว', icon: '💬' }
+    ],
+    class: className = "absolute top-12 right-4 md:top-12 md:right-8" 
+} = Astro.props;
 ---
-<div class="hero-toast-container absolute top-12 right-4 md:top-12 md:right-8 z-30 pointer-events-none transition-all duration-500" aria-live="polite" data-messages={JSON.stringify(messages)}>
+<div class={`hero-toast-container ${className} z-30 pointer-events-none transition-all duration-500`} aria-live="polite" data-messages={JSON.stringify(messages)}>
     
     <div class="hero-toast bg-white/95 backdrop-blur-md border border-green-100 p-4 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex items-center gap-4 transform transition-all duration-700 translate-y-20 opacity-0 scale-95 dark:bg-slate-800 dark:border-slate-700">
         
