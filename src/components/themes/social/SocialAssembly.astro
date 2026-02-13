@@ -8,15 +8,45 @@ import SocialFooterCTA from './SocialFooterCTA.astro';
 
 <div class="font-sarabun bg-[#fff7ed] min-h-screen text-[#431407]">
     <!-- Navbar: Floating & Rounded -->
+    <!-- Navbar: Floating & Rounded -->
     <nav class="fixed top-4 left-4 right-4 z-40 max-w-7xl mx-auto">
-        <div class="bg-white/90 backdrop-blur-md rounded-full px-6 py-3 border border-orange-100 shadow-xl flex items-center justify-between">
-            <div class="font-black text-xl text-[#ea580c] italic">
-                SaaS POS <span class="text-xs ml-1 bg-orange-100 px-2 py-0.5 rounded-full not-italic">Boost!</span>
-            </div>
+        <div class="bg-white/95 backdrop-blur-md rounded-3xl px-6 py-3 border-2 border-orange-100 shadow-xl shadow-orange-500/10 flex flex-col md:flex-row md:items-center justify-between transition-all duration-300 relative">
             
-            <button class="bg-[#431407] text-white px-6 py-2 rounded-full font-bold hover:bg-[#ea580c] transition-colors shadow-lg">
-                เข้าสู่ระบบ
-            </button>
+            <div class="flex justify-between items-center w-full md:w-auto">
+                <div class="font-black text-xl text-[#ea580c] italic flex items-center gap-2 transform hover:scale-105 transition-transform cursor-pointer">
+                    SaaS POS <span class="text-xs ml-1 bg-orange-100 text-[#ea580c] px-3 py-1 rounded-full not-italic border border-orange-200">BOOST!</span>
+                </div>
+
+                <!-- Mobile Trigger -->
+                <button id="social-menu-btn" class="md:hidden text-[#ea580c] p-2 hover:bg-orange-50 rounded-xl transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
+                </button>
+            </div>
+
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex gap-2">
+                <a href="#social-features" class="px-5 py-2 rounded-xl text-sm font-bold text-gray-600 hover:text-[#ea580c] hover:bg-orange-50 transition-all">ฟีเจอร์</a>
+                <a href="#social-pricing" class="px-5 py-2 rounded-xl text-sm font-bold text-gray-600 hover:text-[#ea580c] hover:bg-orange-50 transition-all">ราคา</a>
+                <a href="#social-testimonials" class="px-5 py-2 rounded-xl text-sm font-bold text-gray-600 hover:text-[#ea580c] hover:bg-orange-50 transition-all">รีวิว</a>
+            </div>
+
+            <!-- CTA -->
+            <div class="hidden md:block">
+                <button class="bg-[#ea580c] text-white px-6 py-2.5 rounded-xl font-bold hover:bg-[#c2410c] hover:shadow-lg hover:-translate-y-0.5 transition-all text-sm border-b-4 border-[#c2410c] active:border-b-0 active:translate-y-0.5">
+                    เข้าสู่ระบบ
+                </button>
+            </div>
+
+            <!-- Mobile Menu Dropdown -->
+            <div id="social-mobile-menu" class="hidden w-full pt-4 pb-2 flex-col gap-2 md:hidden">
+                <div class="h-px bg-orange-100 w-full mb-2"></div>
+                <a href="#social-features" class="px-4 py-3 rounded-xl font-bold text-gray-600 hover:bg-orange-50 hover:text-[#ea580c] transition-colors">🚀 ฟีเจอร์</a>
+                <a href="#social-pricing" class="px-4 py-3 rounded-xl font-bold text-gray-600 hover:bg-orange-50 hover:text-[#ea580c] transition-colors">💎 ราคา</a>
+                <a href="#social-testimonials" class="px-4 py-3 rounded-xl font-bold text-gray-600 hover:bg-orange-50 hover:text-[#ea580c] transition-colors">💬 รีวิว</a>
+                <button class="w-full mt-2 bg-[#431407] text-white px-6 py-3 rounded-xl font-bold hover:bg-[#ea580c] transition-colors shadow-lg">
+                    เข้าสู่ระบบ
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -33,3 +63,13 @@ import SocialFooterCTA from './SocialFooterCTA.astro';
         <p>Built for Speed. Built for Sales. &copy; 2024</p>
     </footer>
 </div>
+
+<script>
+    const btn = document.getElementById('social-menu-btn');
+    const menu = document.getElementById('social-mobile-menu');
+
+    btn?.addEventListener('click', () => {
+        menu?.classList.toggle('hidden');
+        menu?.classList.toggle('flex');
+    });
+</script>

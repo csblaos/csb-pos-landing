@@ -1,0 +1,32 @@
+---
+import MonoHero from './MonoHero.astro';
+import MonoComponents from './MonoComponents.astro';
+---
+
+<div class="font-inter bg-white min-h-screen text-black selection:bg-black selection:text-white">
+    <!-- Mono Nav -->
+    <nav class="fixed top-0 w-full z-40 bg-white/90 backdrop-blur border-b border-neutral-100">
+        <div class="max-w-7xl mx-auto px-6 h-24 flex justify-between items-center">
+            <div class="text-2xl font-serif italic tracking-tight">
+                Mono.
+            </div>
+
+            <div class="hidden md:flex gap-12 text-[10px] tracking-[0.2em] uppercase font-medium">
+                <a href="#mono-features" class="hover:line-through decoration-1 transition-all">Index</a>
+                <a href="#mono-pricing" class="hover:line-through decoration-1 transition-all">Values</a>
+                <a href="#mono-testimonials" class="hover:line-through decoration-1 transition-all">Clients</a>
+            </div>
+
+            <button class="text-[10px] tracking-[0.2em] uppercase border-b border-black pb-1 hover:border-transparent transition-colors">
+                Account
+            </button>
+        </div>
+    </nav>
+
+    <MonoHero />
+    <MonoComponents />
+
+    <footer class="bg-white py-12 text-center text-[10px] tracking-[0.2em] uppercase text-neutral-400 border-t border-neutral-100">
+        <p>Est. 2024 — Essential Commerce</p>
+    </footer>
+</div>

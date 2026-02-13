@@ -1,0 +1,77 @@
+---
+import { content } from '../../../data/content';
+import HeroToast from '../../HeroToast.astro';
+
+const { hero } = content;
+---
+
+<section id="zen-hero" class="relative min-h-screen flex items-center pt-20 bg-white overflow-hidden selection:bg-neutral-100 selection:text-neutral-900">
+    <div class="max-w-7xl mx-auto px-6 w-full relative z-10">
+        <div class="max-w-3xl mx-auto text-center space-y-12">
+            
+            <!-- Minimal Badge -->
+            <div class="inline-flex items-center gap-2 px-3 py-1 bg-neutral-50 border border-neutral-100 rounded-full animate-fade-in-up delay-100">
+                <span class="w-1.5 h-1.5 rounded-full bg-neutral-900"></span>
+                <span class="text-[10px] uppercase tracking-[0.2em] text-neutral-500 font-medium">System v3.0</span>
+            </div>
+
+            <!-- Headline -->
+            <h1 class="text-5xl md:text-7xl font-light tracking-tight text-neutral-900 leading-[1.1] animate-fade-in-up delay-200">
+                {hero.title_part1} <br/>
+                <span class="font-medium">{hero.title_part2}</span>
+            </h1>
+
+            <!-- Subheadline -->
+            <p class="text-lg md:text-xl text-neutral-500 font-light max-w-xl mx-auto leading-relaxed animate-fade-in-up delay-300">
+                {hero.subtitle}
+            </p>
+
+            <!-- CTAs -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6 animate-fade-in-up delay-500">
+                <button class="group relative px-8 py-4 bg-neutral-900 text-white text-sm tracking-widest uppercase transition-all hover:bg-neutral-800 flex items-center gap-3 mx-auto sm:mx-0">
+                    <span class="relative z-10">{hero.primaryCta}</span>
+                    <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12h16m0 0l-6-6m6 6l-6 6"></path></svg>
+                </button>
+                <button class="group px-8 py-4 bg-transparent text-neutral-900 border border-neutral-200 text-sm tracking-widest uppercase hover:border-neutral-900 transition-colors flex items-center gap-3">
+                    {hero.secondaryCta}
+                    <svg class="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </button>
+            </div>
+
+            <!-- Trust -->
+            <div class="pt-8 border-t border-neutral-100 w-fit mx-auto animate-fade-in-up delay-700">
+                <p class="text-[10px] uppercase tracking-widest text-neutral-400">Trusted by 2,000+ minimalists</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Decorative Elements -->
+    <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
+        <div class="absolute top-[10%] left-[5%] w-px h-32 bg-gradient-to-b from-transparent via-neutral-200 to-transparent"></div>
+        <div class="absolute bottom-[10%] right-[5%] w-px h-32 bg-gradient-to-b from-transparent via-neutral-200 to-transparent"></div>
+    </div>
+
+    <div class="absolute top-24 right-6">
+        <HeroToast />
+    </div>
+</section>
+
+<style>
+    .animate-fade-in-up {
+        animation: fadeInUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-500 { animation-delay: 0.5s; }
+    .delay-700 { animation-delay: 0.7s; }
+
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>

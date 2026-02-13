@@ -1,13 +1,22 @@
 ---
+export interface Props {
+    messages?: { title: string; desc: string; icon?: string }[];
+}
+
+const { messages = [
+    { title: 'ออเดอร์ใหม่! 💰', desc: 'จาก Facebook • เมื่อสักครู่', icon: '🛍️' },
+    { title: 'แจ้งเตือนชำระเงิน 💸', desc: 'จาก WhatsApp • 2 วินาทีที่แล้ว', icon: '💳' },
+    { title: 'ลูกค้าใหม่ทักแชท 👋', desc: 'จาก LINE OA • 1 นาทีที่แล้ว', icon: '💬' }
+] } = Astro.props;
 ---
-<div id="hero-toast-container" class="absolute top-12 right-4 md:top-12 md:right-8 z-30 pointer-events-none transition-all duration-500" aria-live="polite">
+<div class="hero-toast-container absolute top-12 right-4 md:top-12 md:right-8 z-30 pointer-events-none transition-all duration-500" aria-live="polite" data-messages={JSON.stringify(messages)}>
     
-    <div id="hero-toast" class="bg-white/95 backdrop-blur-md border border-green-100 p-4 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex items-center gap-4 transform transition-all duration-700 translate-y-20 opacity-0 scale-95 dark:bg-slate-800 dark:border-slate-700">
+    <div class="hero-toast bg-white/95 backdrop-blur-md border border-green-100 p-4 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex items-center gap-4 transform transition-all duration-700 translate-y-20 opacity-0 scale-95 dark:bg-slate-800 dark:border-slate-700">
         
         <!-- Icon -->
         <div class="relative flex-shrink-0">
-            <div class="w-12 h-12 bg-green-50 rounded-full flex items-center justify-center text-2xl shadow-inner animate-pulse-slow">
-                🛍️
+            <div class="ht-icon w-12 h-12 bg-green-50 rounded-full flex items-center justify-center text-2xl shadow-inner animate-pulse-slow">
+                {messages[0].icon || '🛍️'}
             </div>
             <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
                 <span class="w-2 h-2 bg-white rounded-full animate-ping"></span>
@@ -16,11 +25,11 @@
 
         <!-- Content -->
         <div>
-            <h4 class="font-bold text-sm text-slate-800 dark:text-white leading-tight mb-1" id="ht-title">
-                ออเดอร์ใหม่!
+            <h4 class="ht-title font-bold text-sm text-slate-800 dark:text-white leading-tight mb-1">
+                {messages[0].title}
             </h4>
-            <p class="text-xs text-slate-500 dark:text-slate-400 font-medium whitespace-nowrap" id="ht-desc">
-                จาก Facebook • เมื่อสักครู่
+            <p class="ht-desc text-xs text-slate-500 dark:text-slate-400 font-medium whitespace-nowrap">
+                {messages[0].desc}
             </p>
         </div>
 
@@ -29,69 +38,76 @@
 </div>
 
 <script>
-    const toast = document.getElementById('hero-toast');
-    const titleEl = document.getElementById('ht-title');
-    const descEl = document.getElementById('ht-desc');
+    // Handle multiple toast instances on the same page
+    const containers = document.querySelectorAll('.hero-toast-container');
     
-    const messages = [
-        { title: 'ออเดอร์ใหม่! 💰', desc: 'จาก Facebook • เมื่อสักครู่' },
-        { title: 'แจ้งเตือนชำระเงิน 💸', desc: 'จาก WhatsApp • 2 วินาทีที่แล้ว' },
-        { title: 'ลูกค้าใหม่ทักแชท 👋', desc: 'จาก LINE OA • 1 นาทีที่แล้ว' }
-    ];
-
-    let currentIndex = 0;
-    const SHOW_DURATION = 4000;
-    const HIDE_DURATION = 2000;
-
-    // Check for reduced motion preference
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-    function showToast() {
-        if (!toast || !titleEl || !descEl) return;
+    containers.forEach((container) => {
+        const toast = container.querySelector('.hero-toast');
+        const titleEl = container.querySelector('.ht-title');
+        const descEl = container.querySelector('.ht-desc');
+        const iconEl = container.querySelector('.ht-icon');
         
-        // Update content
-        const msg = messages[currentIndex];
-        titleEl.textContent = msg.title;
-        descEl.textContent = msg.desc;
-
-        // Show Animation
-        if (!mediaQuery.matches) {
-            toast.classList.remove('translate-y-20', 'opacity-0', 'scale-95');
-            toast.classList.add('translate-y-0', 'opacity-100', 'scale-100');
-        } else {
-            // No movement, just fade
-            toast.classList.remove('opacity-0');
-            toast.classList.add('opacity-100');
-            // Ensure position is static/visible without transform if simplified
-            toast.style.transform = 'none';
+        // Safe parsing with default fallback
+        let messages = [];
+        try {
+            messages = JSON.parse((container as HTMLElement).dataset.messages || '[]');
+        } catch (e) {
+            console.error('Failed to parse toast messages', e);
         }
 
-        // Schedule Hide
-        setTimeout(hideToast, SHOW_DURATION);
-    }
+        if (!toast || !titleEl || !descEl || !iconEl || messages.length === 0) return;
 
-    function hideToast() {
-        if (!toast) return;
+        let currentIndex = 0;
+        const SHOW_DURATION = 4000;
+        const HIDE_DURATION = 2000;
+        
+        // Random start delay to desync multiple toasts
+        const startDelay = 1000 + Math.random() * 2000;
 
-        // Hide Animation
-        if (!mediaQuery.matches) {
-            toast.classList.add('translate-y-20', 'opacity-0', 'scale-95');
-            toast.classList.remove('translate-y-0', 'opacity-100', 'scale-100');
-        } else {
-             toast.classList.add('opacity-0');
-             toast.classList.remove('opacity-100');
+        // Check for reduced motion preference
+        const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+        function showToast() {
+            // Update content
+            const msg = messages[currentIndex];
+            titleEl.textContent = msg.title;
+            descEl.textContent = msg.desc;
+            if (msg.icon) iconEl.textContent = msg.icon;
+
+            // Show Animation
+            if (!mediaQuery.matches) {
+                toast.classList.remove('translate-y-20', 'opacity-0', 'scale-95');
+                toast.classList.add('translate-y-0', 'opacity-100', 'scale-100');
+            } else {
+                toast.classList.remove('opacity-0');
+                toast.classList.add('opacity-100');
+                (toast as HTMLElement).style.transform = 'none';
+            }
+
+            // Schedule Hide
+            setTimeout(hideToast, SHOW_DURATION);
         }
 
-        // Next Loop
-        currentIndex = (currentIndex + 1) % messages.length;
-        
-        // Schedule Show
-        setTimeout(showToast, HIDE_DURATION);
-    }
+        function hideToast() {
+            // Hide Animation
+            if (!mediaQuery.matches) {
+                toast.classList.add('translate-y-20', 'opacity-0', 'scale-95');
+                toast.classList.remove('translate-y-0', 'opacity-100', 'scale-100');
+            } else {
+                 toast.classList.add('opacity-0');
+                 toast.classList.remove('opacity-100');
+            }
 
-    // Start Loop
-    setTimeout(showToast, 1000);
+            // Next Loop
+            currentIndex = (currentIndex + 1) % messages.length;
+            
+            // Schedule Show
+            setTimeout(showToast, HIDE_DURATION);
+        }
 
+        // Start Loop
+        setTimeout(showToast, startDelay);
+    });
 </script>
 
 <style>

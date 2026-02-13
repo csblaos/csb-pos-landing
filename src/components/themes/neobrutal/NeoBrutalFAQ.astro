@@ -1,0 +1,27 @@
+---
+import { content } from '../../../data/content';
+
+const { faq } = content;
+---
+
+<section id="neobrutal-faq" class="py-24 bg-[#facc15] font-theme border-t-4 border-black">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-5xl font-black text-center text-black mb-12 uppercase">
+            FAQ?
+        </h2>
+
+        <div class="space-y-4">
+            {faq.map(item => (
+                <details class="group bg-white border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] open:shadow-none open:translate-x-1 open:translate-y-1 transition-all">
+                    <summary class="flex justify-between items-center cursor-pointer p-6 list-none font-black text-xl uppercase hover:bg-black hover:text-white transition-colors">
+                        <span>{item.q}</span>
+                        <span class="text-2xl group-open:rotate-45 transition-transform">+</span>
+                    </summary>
+                    <div class="p-6 text-black font-bold text-lg border-t-4 border-black bg-[#fdf2f8]">
+                        {item.a}
+                    </div>
+                </details>
+            ))}
+        </div>
+    </div>
+</section>

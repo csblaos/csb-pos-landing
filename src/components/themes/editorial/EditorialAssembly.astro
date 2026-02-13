@@ -1,0 +1,32 @@
+---
+import EditorialHero from './EditorialHero.astro';
+import EditorialComponents from './EditorialComponents.astro';
+---
+
+<div class="font-sans bg-[#fffbeb] min-h-screen text-[#1f2937]">
+    <!-- Editorial Nav -->
+    <nav class="fixed top-0 w-full z-40 py-8 px-8 md:px-16 flex justify-between items-center bg-[#fffbeb]/95 border-b border-transparent transition-all duration-500 hover:border-[#e5e7eb]">
+        <div class="text-2xl font-serif font-bold tracking-tight text-[#1f2937] italic">
+            The SaaS.
+        </div>
+
+        <div class="hidden md:flex gap-12 text-[10px] font-bold uppercase tracking-[0.25em] text-[#4b5563]">
+            <a href="#editorial-features" class="hover:text-black transition-colors">Issue 01</a>
+            <a href="#editorial-pricing" class="hover:text-black transition-colors">Membership</a>
+            <a href="#editorial-testimonials" class="hover:text-black transition-colors">Visions</a>
+        </div>
+
+        <button class="text-[10px] font-bold uppercase tracking-[0.25em] border-b border-black pb-1 hover:text-[#d97706] hover:border-[#d97706] transition-colors">
+            Sign In
+        </button>
+    </nav>
+
+    <EditorialHero />
+    <EditorialComponents />
+
+    <footer class="bg-[#1f2937] py-24 px-8 text-center border-t border-gray-800">
+        <div class="text-[10px] font-bold uppercase tracking-[0.3em] text-[#9ca3af]">
+            Volume 1 • © 2024
+        </div>
+    </footer>
+</div>

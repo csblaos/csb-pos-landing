@@ -1,0 +1,138 @@
+---
+import { content } from '../../../data/content';
+import HeroToast from '../../HeroToast.astro';
+import ConnectivityAnim from '../../ConnectivityAnim.astro';
+
+const { hero } = content;
+---
+
+<section class="min-h-screen flex flex-col justify-center bg-[#fffbeb] font-theme pt-32 pb-16 relative overflow-hidden">
+    
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-12 w-full">
+        <!-- Badge -->
+        <div class="text-center mb-8">
+            <span class="inline-block border-b border-[#374151] pb-1 text-[#374151] text-xs uppercase tracking-[0.3em] font-sans">
+                {hero.badge}
+            </span>
+        </div>
+
+        <!-- Title -->
+        <h1 class="text-5xl lg:text-8xl font-serif text-[#1f2937] text-center leading-tight mb-8 font-light">
+            {hero.title}
+        </h1>
+
+        <!-- Subtitle & CTA -->
+        <div class="grid lg:grid-cols-12 gap-12 items-start mb-24">
+            <div class="lg:col-span-3 lg:col-start-2 hidden lg:block text-right pt-4">
+                <p class="text-[#d97706] font-serif italic text-xl">The new standard.</p>
+            </div>
+            
+            <div class="lg:col-span-6 text-center space-y-8">
+                <p class="text-lg text-[#4b5563] font-light leading-relaxed">
+                    {hero.subtitle}
+                </p>
+                <div class="flex justify-center gap-6">
+                    <button class="bg-[#1f2937] text-white px-10 py-4 font-sans text-xs uppercase tracking-widest hover:bg-black transition-colors">
+                        {hero.primaryCta}
+                    </button>
+                    <button class="text-[#1f2937] px-10 py-4 font-sans text-xs uppercase tracking-widest border border-[#1f2937] hover:bg-white transition-colors">
+                        {hero.secondaryCta}
+                    </button>
+                </div>
+            </div>
+
+            <div class="lg:col-span-3 text-left pt-4 hidden lg:block text-xs uppercase tracking-widest text-[#6b7280] space-y-2">
+                 {hero.highlights.map(item => (
+                    <div class="flex items-center gap-2">
+                        <span class="w-8 h-[1px] bg-[#d97706]"></span> {item}
+                    </div>
+                 ))}
+            </div>
+        </div>
+
+        <!-- Visual / Image Area -->
+        <div class="relative w-full aspect-[2/1] bg-[#fdfbf7] border border-[#d1d5db] overflow-hidden group">
+             <!-- Technical Grid Background -->
+             <div class="absolute inset-0 opacity-10 pointer-events-none">
+                 <svg class="w-full h-full" width="100%" height="100%">
+                    <defs>
+                        <pattern id="editorial-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1f2937" stroke-width="0.5"/>
+                        </pattern>
+                    </defs>
+                    <rect width="100%" height="100%" fill="url(#editorial-grid)" />
+                </svg>
+             </div>
+             
+             <!-- Diagram -->
+             <div class="absolute inset-0 flex items-center justify-center">
+                 <svg class="w-full h-full max-w-3xl max-h-[500px] text-[#1f2937] p-8" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Central Hub -->
+                    <g class="transition-transform duration-700 hover:scale-105 origin-center cursor-crosshair">
+                        <circle cx="400" cy="200" r="60" stroke="currentColor" stroke-width="1.5" fill="#fffbeb"/>
+                        <circle cx="400" cy="200" r="52" stroke="currentColor" stroke-width="0.5" stroke-dasharray="4 2"/>
+                        <path d="M400 150 L400 250 M350 200 L450 200" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
+                        <text x="400" y="205" text-anchor="middle" font-family="Times New Roman, serif" font-size="14" font-style="italic" letter-spacing="0.1em">NEXUS</text>
+                    </g>
+
+                    <!-- Connecting Lines -->
+                    <path d="M260 120 C320 120, 320 200, 340 200" stroke="currentColor" stroke-width="0.5" class="animate-[dash_3s_linear_infinite]" stroke-dasharray="5 5"/>
+                    <path d="M540 120 C480 120, 480 200, 460 200" stroke="currentColor" stroke-width="0.5" class="animate-[dash_3s_linear_infinite_reverse]" stroke-dasharray="5 5"/>
+                    <path d="M260 280 C320 280, 320 200, 340 200" stroke="currentColor" stroke-width="0.5" class="animate-[dash_3s_linear_infinite]" stroke-dasharray="5 5"/>
+                    <path d="M540 280 C480 280, 480 200, 460 200" stroke="currentColor" stroke-width="0.5" class="animate-[dash_3s_linear_infinite_reverse]" stroke-dasharray="5 5"/>
+
+                    <!-- Nodes -->
+                    <!-- Top Left -->
+                    <g class="transition-all duration-700 hover:-translate-y-1">
+                         <rect x="180" y="90" width="80" height="60" stroke="currentColor" stroke-width="1" fill="#fffbeb"/>
+                         <text x="220" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="bold" letter-spacing="0.1em">SALES</text>
+                         <text x="220" y="130" text-anchor="middle" font-family="Times New Roman, serif" font-size="8" fill="#6b7280" italic="true">Fig A</text>
+                    </g>
+
+                    <!-- Top Right -->
+                    <g class="transition-all duration-700 hover:-translate-y-1">
+                        <rect x="540" y="90" width="80" height="60" stroke="currentColor" stroke-width="1" fill="#fffbeb"/>
+                        <text x="580" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="bold" letter-spacing="0.1em">STOCK</text>
+                        <text x="580" y="130" text-anchor="middle" font-family="Times New Roman, serif" font-size="8" fill="#6b7280" italic="true">Fig B</text>
+                    </g>
+                    
+                    <!-- Bottom Left -->
+                    <g class="transition-all duration-700 hover:translate-y-1">
+                        <rect x="180" y="250" width="80" height="60" stroke="currentColor" stroke-width="1" fill="#fffbeb"/>
+                        <text x="220" y="275" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="bold" letter-spacing="0.1em">CRM</text>
+                        <text x="220" y="290" text-anchor="middle" font-family="Times New Roman, serif" font-size="8" fill="#6b7280" italic="true">Fig C</text>
+                    </g>
+
+                    <!-- Bottom Right -->
+                    <g class="transition-all duration-700 hover:translate-y-1">
+                        <rect x="540" y="250" width="80" height="60" stroke="currentColor" stroke-width="1" fill="#fffbeb"/>
+                        <text x="580" y="275" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="bold" letter-spacing="0.1em">DATA</text>
+                        <text x="580" y="290" text-anchor="middle" font-family="Times New Roman, serif" font-size="8" fill="#6b7280" italic="true">Fig D</text>
+                    </g>
+
+                    <!-- Annotations -->
+                    <line x1="100" y1="200" x2="140" y2="200" stroke="currentColor" stroke-width="0.5"/>
+                    <text x="90" y="203" text-anchor="end" font-family="Times New Roman, serif" font-size="10" italic="true">Input Stream</text>
+
+                    <line x1="660" y1="200" x2="700" y2="200" stroke="currentColor" stroke-width="0.5"/>
+                    <text x="710" y="203" text-anchor="start" font-family="Times New Roman, serif" font-size="10" italic="true">Output Metric</text>
+
+                </svg>
+             </div>
+
+             <!-- Overlay Text -->
+             <div class="absolute bottom-6 left-6 border border-[#1f2937] bg-[#fffbeb] px-4 py-2 z-20 shadow-[4px_4px_0px_0px_rgba(31,41,55,1)]">
+                 <p class="text-[#1f2937] font-serif text-sm italic">
+                    <span class="font-bold not-italic mr-2">Fig 1.1</span> Integrated Systems Visualization
+                 </p>
+             </div>
+        </div>
+
+    </div>
+
+    <!-- Minimal Toast -->
+    <div class="[&>div]:!shadow-none [&>div]:!border-l-4 [&>div]:!border-[#1f2937] [&>div]:!bg-[#fffbeb] [&>div]:!rounded-none">
+        <HeroToast />
+    </div>
+
+</section>

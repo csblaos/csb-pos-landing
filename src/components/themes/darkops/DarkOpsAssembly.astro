@@ -1,0 +1,35 @@
+---
+import DarkOpsHero from './DarkOpsHero.astro';
+import DarkOpsComponents from './DarkOpsComponents.astro';
+---
+
+<div class="font-jetbrains bg-slate-900 min-h-screen text-slate-300">
+    <!-- DarkOps Nav -->
+    <nav class="fixed top-0 w-full z-40 bg-slate-900/95 border-b border-slate-800 backdrop-blur">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
+            <div class="flex items-center gap-2 text-white font-mono font-bold tracking-wider">
+                <div class="w-2 h-2 bg-emerald-500 animate-pulse"></div>
+                OPS_CENTER_V3
+            </div>
+
+            <div class="hidden md:flex gap-8 text-xs font-mono font-bold text-slate-500 uppercase tracking-widest">
+                <a href="#darkops-features" class="hover:text-emerald-400 transition-colors hover:underline decoration-emerald-500/50 underline-offset-4">Modules</a>
+                <a href="#darkops-pricing" class="hover:text-emerald-400 transition-colors hover:underline decoration-emerald-500/50 underline-offset-4">Access</a>
+                <a href="#darkops-testimonials" class="hover:text-emerald-400 transition-colors hover:underline decoration-emerald-500/50 underline-offset-4">Intel</a>
+            </div>
+
+            <button class="border border-slate-700 bg-slate-800 text-[10px] font-bold uppercase tracking-widest text-emerald-500 px-4 py-1.5 hover:bg-emerald-500 hover:text-white hover:border-emerald-500 transition-all shadow-[0_0_10px_rgba(16,185,129,0.1)]">
+                Secure_Login
+            </button>
+        </div>
+    </nav>
+
+    <DarkOpsHero />
+    <DarkOpsComponents />
+
+    <footer class="bg-slate-950 py-8 text-center border-t border-slate-800">
+        <div class="text-[10px] font-mono text-slate-600 uppercase tracking-widest">
+            System Operations Compatible • 2024
+        </div>
+    </footer>
+</div>

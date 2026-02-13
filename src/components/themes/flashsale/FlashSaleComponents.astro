@@ -1,0 +1,148 @@
+---
+import { content } from '../../../data/content';
+
+const { features, pricing, painPoints, solutions, socialProof, faq, finalCta } = content;
+---
+
+<!-- Pain & Solutions -->
+<section class="py-24 bg-red-600 font-theme text-white border-b-8 border-yellow-400">
+    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16">
+        <div class="bg-red-800/50 p-8 border-4 border-red-900/50 dashed-border">
+            <h2 class="text-4xl font-black uppercase italic mb-8 text-yellow-400">Stop Losing Money!</h2>
+            <ul class="space-y-4">
+                {painPoints.map((pain) => (
+                    <li class="flex gap-4 items-center text-xl font-bold">
+                        <span class="text-yellow-400 text-3xl">✗</span> {pain}
+                    </li>
+                ))}
+            </ul>
+        </div>
+        <div class="bg-white/10 p-8 border-4 border-white/20">
+            <h2 class="text-4xl font-black uppercase italic mb-8 text-white">Start Profiting!</h2>
+            <ul class="space-y-4">
+                {solutions.map((sol) => (
+                    <li class="flex gap-4 items-center text-xl font-bold">
+                        <span class="text-green-400 text-3xl">✓</span> {sol}
+                    </li>
+                ))}
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Features -->
+<section id="flashsale-features" class="py-24 bg-white font-theme">
+    <div class="max-w-7xl mx-auto px-6">
+        <h2 class="text-6xl font-black text-center text-red-900 uppercase italic mb-16 transform -rotate-2">
+            Features Packed
+        </h2>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+            {features.map((feature, i) => (
+                <div class="bg-yellow-50 border-4 border-red-900 p-8 hover:bg-yellow-100 transition-colors shadow-[8px_8px_0_rgb(127,29,29)]">
+                    <div class="text-5xl mb-6 text-red-600">
+                        <svg viewBox="0 0 24 24" class="w-12 h-12" fill="currentColor" set:html={feature.icon}></svg>
+                    </div>
+                    <h3 class="text-2xl font-black text-red-900 uppercase mb-4 italic">{feature.title}</h3>
+                    <p class="text-red-900/80 font-bold leading-tight">{feature.description}</p>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<!-- Pricing -->
+<section id="flashsale-pricing" class="py-24 bg-red-50 font-theme border-y-8 border-red-900">
+    <div class="max-w-7xl mx-auto px-6">
+         <div class="text-center mb-16 relative">
+             <div class="absolute inset-x-0 top-1/2 h-1 bg-red-200 -z-10"></div>
+            <span class="bg-red-50 px-8 text-5xl font-black text-red-900 uppercase italic">
+                Best Deals
+            </span>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8 items-end">
+            {pricing.plans.map(plan => (
+                <div class={`relative p-8 border-4 ${
+                    plan.recommended 
+                    ? 'bg-yellow-400 border-red-900 transform scale-110 rotate-1 shadow-[15px_15px_0_rgb(127,29,29)] z-10' 
+                    : 'bg-white border-red-200 hover:border-red-900'
+                }`}>
+                    {plan.recommended && (
+                         <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-red-600 text-white font-black text-lg px-8 py-2 uppercase transform -rotate-2 animate-pulse whitespace-nowrap shadow-lg">
+                            Best Value
+                         </div>
+                    )}
+                    
+                    <h3 class="text-3xl font-black text-red-900 uppercase italic mb-2">{plan.name}</h3>
+                    <div class="flex items-baseline gap-2 mb-6">
+                         <span class="text-lg text-red-900/50 line-through font-bold decoration-2">$999</span>
+                        <span class="text-5xl font-black text-red-600">{plan.price}</span>
+                    </div>
+                    
+                    <ul class="space-y-3 mb-8">
+                        {plan.features.map(feature => (
+                            <li class="flex gap-2 text-red-900 font-bold">
+                                <span class="text-green-600">✔</span> {feature}
+                            </li>
+                        ))}
+                    </ul>
+
+                    <button class={`w-full py-4 font-black uppercase text-xl border-2 transition-transform active:scale-95 ${
+                        plan.recommended 
+                        ? 'bg-red-900 text-white border-red-900 hover:bg-red-800' 
+                        : 'bg-white text-red-900 border-red-900 hover:bg-red-50'
+                    }`}>
+                        {plan.cta}
+                    </button>
+                    
+                    <div class="mt-4 text-center text-xs font-bold uppercase text-red-900/60">
+                        Limited Quantities Only!
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section id="flashsale-testimonials" class="py-24 bg-yellow-400 font-theme">
+    <div class="max-w-7xl mx-auto px-6">
+        <h2 class="text-4xl font-black text-red-900 text-center uppercase italic mb-12">Don't Miss Out!</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            {socialProof.testimonials.map(t => (
+                <div class="bg-white p-6 border-b-8 border-red-600 shadow-xl transform rotate-1 hover:rotate-0 transition-transform">
+                    <p class="text-xl font-bold bg-yellow-200 inline-block px-1 mb-4 italic">"{t.quote}"</p>
+                    <p class="font-black text-red-900 uppercase text-lg">— {t.name} <span class="text-xs bg-red-600 text-white px-1 ml-2 align-middle">PRO</span></p>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<!-- FAQ & Footer -->
+<section id="flashsale-faq" class="py-24 bg-white font-theme">
+    <div class="max-w-3xl mx-auto px-6 mb-24">
+        <h2 class="text-4xl font-black text-red-900 mb-12 uppercase italic text-center">Fast Answers</h2>
+        <div class="space-y-4">
+            {faq.map(item => (
+                <details class="bg-red-50 outline-2 outline-dashed outline-red-200 group">
+                    <summary class="flex justify-between items-center cursor-pointer p-6 font-bold text-red-900 uppercase">
+                        <span>{item.q}</span>
+                        <span class="text-2xl font-black">+</span>
+                    </summary>
+                    <div class="p-6 pt-0 text-red-800 font-medium">
+                        {item.a}
+                    </div>
+                </details>
+            ))}
+        </div>
+    </div>
+
+    <div class="bg-red-700 py-16 text-center border-t-8 border-yellow-400">
+        <h2 class="text-4xl font-black text-white uppercase italic mb-8 animate-pulse">Offer Expires Soon!</h2>
+        <button class="px-12 py-6 bg-yellow-400 text-red-900 font-black text-2xl uppercase transform -skew-x-12 hover:scale-105 shadow-[0_10px_0_rgba(0,0,0,0.2)] transition-all">
+            <span class="inline-block transform skew-x-12">{finalCta.primaryCta} NOW</span>
+        </button>
+    </div>
+</section>

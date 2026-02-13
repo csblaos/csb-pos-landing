@@ -5,6 +5,14 @@
   --font-sarabun: 'Sarabun', sans-serif;
   --font-chakra: 'Chakra Petch', sans-serif;
   --font-serif: 'Noto Serif Thai', serif;
+  --font-inter: 'Inter', sans-serif;
+  --font-jetbrains: 'JetBrains Mono', monospace;
+  --font-outfit: 'Outfit', sans-serif;
+  --font-nunito: 'Nunito', sans-serif;
+  --font-orbitron: 'Orbitron', sans-serif;
+  --font-lato: 'Lato', sans-serif;
+  --font-roboto-condensed: 'Roboto Condensed', sans-serif;
+  --font-playfair: 'Playfair Display', serif;
 
   --animate-float: float 6s ease-in-out infinite;
 
@@ -28,98 +36,225 @@
     scroll-behavior: smooth;
   }
 
-  /* Shared Theme Classes */
   .theme-content {
     display: none;
-    /* Hide all themes by default */
   }
 
-  /* Show Active Theme */
-  [data-theme="growth"] #theme-growth {
+  [data-theme="growth"] #theme-growth,
+  [data-theme="social"] #theme-social,
+  [data-theme="premium"] #theme-premium,
+  [data-theme="web3"] #theme-web3,
+  [data-theme="neobrutal"] #theme-neobrutal,
+  [data-theme="editorial"] #theme-editorial,
+  [data-theme="friendly"] #theme-friendly,
+  [data-theme="zen"] #theme-zen,
+  [data-theme="darkops"] #theme-darkops,
+  [data-theme="aurora"] #theme-aurora,
+  [data-theme="clay"] #theme-clay,
+  [data-theme="hologram"] #theme-hologram,
+  [data-theme="corporate"] #theme-corporate,
+  [data-theme="flashsale"] #theme-flashsale,
+  [data-theme="mono"] #theme-mono {
     display: block;
   }
 
-  [data-theme="social"] #theme-social {
-    display: block;
-  }
-
-  [data-theme="premium"] #theme-premium {
-    display: block;
-  }
-
-  /* 
-    THEME 1: ONLINE GROWTH (Blue/White/Slate) 
-    Professional, Clean, Trustworthy
-  */
+  /* THEME 1: ONLINE GROWTH */
   :root,
   [data-theme="growth"] {
     --theme-primary: #2563eb;
-    /* blue-600 */
     --theme-primary-hover: #1d4ed8;
-    /* blue-700 */
     --theme-secondary: #0f172a;
-    /* slate-900 */
     --theme-bg: #ffffff;
-    /* white */
     --theme-surface: #f8fafc;
-    /* slate-50 */
     --theme-text: #334155;
-    /* slate-700 */
     --theme-heading: #0f172a;
-    /* slate-900 */
     --theme-border: #e2e8f0;
-    /* slate-200 */
     --theme-font: var(--font-prompt);
   }
 
-  /* 
-    THEME 2: SOCIAL COMMERCE BOOST (Orange/Red/Cream)
-    High Energy, Bold, Urgent
-  */
+  /* THEME 2: SOCIAL COMMERCE BOOST */
   [data-theme="social"] {
     --theme-primary: #ea580c;
-    /* orange-600 */
     --theme-primary-hover: #c2410c;
-    /* orange-700 */
     --theme-secondary: #b91c1c;
-    /* red-700 */
     --theme-bg: #fff7ed;
-    /* orange-50 */
     --theme-surface: #ffedd5;
-    /* orange-100 */
     --theme-text: #7c2d12;
-    /* orange-900 */
     --theme-heading: #431407;
-    /* orange-950 */
     --theme-border: #fed7aa;
-    /* orange-200 */
     --theme-font: var(--font-sarabun);
   }
 
-  /* 
-    THEME 3: PREMIUM BRAND STORE (Emerald/Gold/Stone)
-    Sophisticated, Elegant, Calm
-  */
+  /* THEME 3: PREMIUM BRAND STORE */
   [data-theme="premium"] {
     --theme-primary: #047857;
-    /* emerald-700 */
     --theme-primary-hover: #065f46;
-    /* emerald-800 */
     --theme-secondary: #ca8a04;
-    /* yellow-600 (Gold) */
     --theme-bg: #fafaf9;
-    /* stone-50 */
     --theme-surface: #f5f5f4;
-    /* stone-100 */
     --theme-text: #57534e;
-    /* stone-600 */
     --theme-heading: #1c1917;
-    /* stone-900 */
     --theme-border: #e7e5e4;
-    /* stone-200 */
     --theme-font: var(--font-prompt);
-    /* Clean sans for premium feel */
     --theme-font-head: var(--font-serif);
+  }
+
+  /* THEME 4: WEB3 PULSE */
+  [data-theme="web3"] {
+    --theme-primary: #06b6d4;
+    --theme-primary-hover: #0891b2;
+    --theme-secondary: #22c55e;
+    --theme-bg: #050505;
+    --theme-surface: #0a0a0a;
+    --theme-text: #94a3b8;
+    --theme-heading: #f8fafc;
+    --theme-border: #1e293b;
+    --theme-font: var(--font-chakra);
+  }
+
+  /* THEME 5: NEO BRUTAL COMMERCE */
+  [data-theme="neobrutal"] {
+    --theme-primary: #facc15;
+    --theme-primary-hover: #eab308;
+    --theme-secondary: #000000;
+    --theme-bg: #ffffff;
+    --theme-surface: #fdf2f8;
+    --theme-text: #000000;
+    --theme-heading: #000000;
+    --theme-border: #000000;
+    --theme-font: var(--font-sarabun);
+    --theme-font-head: var(--font-chakra);
+  }
+
+  /* THEME 6: EDITORIAL PREMIUM */
+  [data-theme="editorial"] {
+    --theme-primary: #1f2937;
+    --theme-primary-hover: #000000;
+    --theme-secondary: #d97706;
+    --theme-bg: #fffbeb;
+    --theme-surface: #ffffff;
+    --theme-text: #374151;
+    --theme-heading: #1f2937;
+    --theme-border: #e5e7eb;
+    --theme-font: var(--font-prompt);
+    --theme-font-head: var(--font-serif);
+  }
+
+  /* THEME 7: FRIENDLY SAAS */
+  [data-theme="friendly"] {
+    --theme-primary: #6366f1;
+    --theme-primary-hover: #4f46e5;
+    --theme-secondary: #34d399;
+    --theme-bg: #f5f3ff;
+    --theme-surface: #ffffff;
+    --theme-text: #4b5563;
+    --theme-heading: #3730a3;
+    --theme-border: #ddd6fe;
+    --theme-font: var(--font-prompt);
+  }
+
+  /* THEME 8: MINIMAL ZEN */
+  [data-theme="zen"] {
+    --theme-primary: #171717;
+    --theme-primary-hover: #404040;
+    --theme-secondary: #737373;
+    --theme-bg: #ffffff;
+    --theme-surface: #fafafa;
+    --theme-text: #525252;
+    --theme-heading: #171717;
+    --theme-border: #e5e5e5;
+    --theme-font: var(--font-inter);
+  }
+
+  /* THEME 9: DARK OPS PRO */
+  [data-theme="darkops"] {
+    --theme-primary: #10b981;
+    --theme-primary-hover: #059669;
+    --theme-secondary: #3b82f6;
+    --theme-bg: #0f172a;
+    --theme-surface: #1e293b;
+    --theme-text: #94a3b8;
+    --theme-heading: #e2e8f0;
+    --theme-border: #334155;
+    --theme-font: var(--font-jetbrains);
+  }
+
+  /* THEME 10: AURORA GRADIENT */
+  [data-theme="aurora"] {
+    --theme-primary: #8b5cf6;
+    --theme-primary-hover: #7c3aed;
+    --theme-secondary: #f472b6;
+    --theme-bg: #000000;
+    --theme-surface: rgba(255, 255, 255, 0.1);
+    --theme-text: #e2e8f0;
+    --theme-heading: #ffffff;
+    --theme-border: rgba(255, 255, 255, 0.2);
+    --theme-font: var(--font-outfit);
+  }
+
+  /* THEME 11: CLAY SOFT UI */
+  [data-theme="clay"] {
+    --theme-primary: #f87171;
+    --theme-primary-hover: #ef4444;
+    --theme-secondary: #60a5fa;
+    --theme-bg: #eef2f6;
+    --theme-surface: #eef2f6;
+    --theme-text: #475569;
+    --theme-heading: #334155;
+    --theme-border: #cbd5e1;
+    --theme-font: var(--font-nunito);
+  }
+
+  /* THEME 12: FUTURISTIC HOLOGRAM */
+  [data-theme="hologram"] {
+    --theme-primary: #d946ef;
+    --theme-primary-hover: #c026d3;
+    --theme-secondary: #06b6d4;
+    --theme-bg: #09090b;
+    --theme-surface: rgba(9, 9, 11, 0.8);
+    --theme-text: #a1a1aa;
+    --theme-heading: #e4e4e7;
+    --theme-border: #27272a;
+    --theme-font: var(--font-orbitron);
+  }
+
+  /* THEME 13: CORPORATE TRUST */
+  [data-theme="corporate"] {
+    --theme-primary: #1e3a8a;
+    --theme-primary-hover: #172554;
+    --theme-secondary: #dc2626;
+    --theme-bg: #ffffff;
+    --theme-surface: #f8fafc;
+    --theme-text: #334155;
+    --theme-heading: #0f172a;
+    --theme-border: #cbd5e1;
+    --theme-font: var(--font-lato);
+  }
+
+  /* THEME 14: COMMERCE FLASH SALE */
+  [data-theme="flashsale"] {
+    --theme-primary: #ef4444;
+    --theme-primary-hover: #b91c1c;
+    --theme-secondary: #fcd34d;
+    --theme-bg: #fff1f2;
+    --theme-surface: #ffffff;
+    --theme-text: #991b1b;
+    --theme-heading: #7f1d1d;
+    --theme-border: #fecaca;
+    --theme-font: var(--font-roboto-condensed);
+  }
+
+  /* THEME 15: MONO PREMIUM */
+  [data-theme="mono"] {
+    --theme-primary: #000000;
+    --theme-primary-hover: #262626;
+    --theme-secondary: #ffffff;
+    --theme-bg: #ffffff;
+    --theme-surface: #f5f5f5;
+    --theme-text: #525252;
+    --theme-heading: #171717;
+    --theme-border: #d4d4d4;
+    --theme-font: var(--font-playfair);
   }
 }
 
@@ -128,7 +263,6 @@
     text-wrap: balance;
   }
 
-  /* Utility class to use theme variables */
   .bg-theme-primary {
     background-color: var(--theme-primary);
   }

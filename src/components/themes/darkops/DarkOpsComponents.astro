@@ -1,0 +1,168 @@
+---
+import { content } from '../../../data/content';
+
+const { features, pricing, painPoints, solutions, socialProof, faq, finalCta } = content;
+---
+
+<!-- Pain & Solutions -->
+<section class="py-24 bg-slate-900 font-theme border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16">
+        <div class="bg-slate-800/50 border border-red-900/30 p-8 rounded-sm relative overflow-hidden group">
+            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                <svg width="100" height="100" viewBox="0 0 24 24" fill="red"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+            </div>
+            <h2 class="text-xl font-mono font-bold text-red-500 mb-8 uppercase tracking-wider flex items-center gap-2">
+                <span class="w-2 h-2 bg-red-500 animate-pulse"></span>
+                Critical_Errors
+            </h2>
+            <ul class="space-y-4 font-mono text-sm">
+                {painPoints.map((pain) => (
+                    <li class="flex gap-4 text-slate-400 items-start">
+                        <span class="text-red-500 shrink-0">[x]</span>
+                        {pain}
+                    </li>
+                ))}
+            </ul>
+        </div>
+
+        <div class="bg-slate-800/50 border border-emerald-900/30 p-8 rounded-sm relative overflow-hidden group">
+             <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                <svg width="100" height="100" viewBox="0 0 24 24" fill="lime"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            </div>
+            <h2 class="text-xl font-mono font-bold text-emerald-500 mb-8 uppercase tracking-wider flex items-center gap-2">
+                <span class="w-2 h-2 bg-emerald-500 animate-pulse"></span>
+                System_Optimized
+            </h2>
+            <ul class="space-y-4 font-mono text-sm">
+                {solutions.map((sol) => (
+                    <li class="flex gap-4 text-slate-300 items-start">
+                        <span class="text-emerald-500 shrink-0">[✓]</span>
+                        {sol}
+                    </li>
+                ))}
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Features -->
+<section id="darkops-features" class="py-24 bg-slate-950 font-theme border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-6">
+        <h2 class="text-2xl font-mono font-bold text-center text-white mb-16 uppercase tracking-[0.2em] border-b border-slate-800 pb-4 w-fit mx-auto">
+            Module_List
+        </h2>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {features.map((feature, i) => (
+                <div class="bg-slate-900 border border-slate-800 p-6 hover:border-emerald-500/50 hover:bg-slate-800 transition-all group">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="text-emerald-500 w-10 h-10 border border-slate-700 bg-slate-950 flex items-center justify-center group-hover:border-emerald-500 transition-colors">
+                            <svg viewBox="0 0 24 24" class="w-6 h-6" fill="currentColor" set:html={feature.icon}></svg>
+                        </div>
+                        <span class="text-[10px] font-mono text-slate-600 group-hover:text-emerald-500">ID_{String(i+1).padStart(2, '0')}</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2 font-mono group-hover:text-emerald-400">{feature.title}</h3>
+                    <p class="text-slate-500 text-xs leading-relaxed font-mono">{feature.description}</p>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<!-- Pricing -->
+<section id="darkops-pricing" class="py-24 bg-slate-900 font-theme border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-3 gap-6 items-end">
+            {pricing.plans.map(plan => (
+                <div class={`relative p-8 border ${
+                    plan.recommended 
+                    ? 'bg-slate-800 border-emerald-500 shadow-[0_0_30px_rgba(16,185,129,0.1)] z-10' 
+                    : 'bg-slate-900 border-slate-700 opacity-80 hover:opacity-100 hover:border-slate-500'
+                }`}>
+                    {plan.recommended && (
+                         <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 to-blue-500"></div>
+                    )}
+                    
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-lg font-bold text-white font-mono uppercase">{plan.name}</h3>
+                        {plan.recommended && <span class="text-[10px] text-emerald-500 font-bold border border-emerald-500 px-2 py-0.5 rounded">REC</span>}
+                    </div>
+
+                    <div class="text-3xl font-bold text-white mb-8 font-mono">{plan.price}</div>
+                    
+                    <ul class="space-y-3 mb-8 border-t border-slate-700/50 pt-8">
+                        {plan.features.map(feature => (
+                           <li class="flex gap-3 text-xs font-mono text-slate-400">
+                               <span class="text-emerald-500">></span>
+                               {feature}
+                           </li>
+                        ))}
+                    </ul>
+
+                    <button class={`w-full py-3 text-xs font-bold font-mono uppercase tracking-wider transition-all ${
+                        plan.recommended 
+                        ? 'bg-emerald-600 text-white hover:bg-emerald-500' 
+                        : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                    }`}>
+                        {plan.cta}
+                    </button>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section id="darkops-testimonials" class="py-24 bg-slate-950 font-theme border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-3 gap-8">
+            {socialProof.testimonials.map(t => (
+                <div class="bg-slate-900 p-6 border-l-2 border-slate-700 hover:border-emerald-500 transition-colors">
+                    <p class="text-slate-400 text-sm font-mono mb-4 leading-relaxed">"{t.quote}"</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 bg-slate-800 rounded flex items-center justify-center text-xs font-bold text-white">
+                            {t.name[0]}
+                        </div>
+                        <p class="text-xs font-bold text-emerald-500 font-mono uppercase">{t.name}</p>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<!-- FAQ & Footer -->
+<section id="darkops-faq" class="py-24 bg-slate-900 font-theme">
+    <div class="max-w-3xl mx-auto px-6 mb-24">
+        <h2 class="text-2xl font-mono font-bold text-white mb-12 uppercase">
+            // Knowledge_Base
+        </h2>
+        <div class="space-y-4">
+            {faq.map((item, i) => (
+                <details class="bg-slate-950 border border-slate-800 group">
+                    <summary class="flex justify-between items-center cursor-pointer p-4 text-slate-300 font-mono text-sm group-hover:text-emerald-400 transition-colors">
+                        <span class="flex gap-4"><span class="text-slate-600">0{i+1}</span> {item.q}</span>
+                        <span class="text-slate-600 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <div class="p-4 pt-0 text-slate-500 text-xs font-mono border-t border-slate-900 leading-relaxed bg-slate-900/50">
+                        {item.a}
+                    </div>
+                </details>
+            ))}
+        </div>
+    </div>
+
+    <div class="text-center pb-12">
+        <div class="inline-block border border-slate-700 p-8 bg-slate-950 relative overflow-hidden">
+            <div class="absolute inset-0 bg-emerald-500/5 animate-pulse pointer-events-none"></div>
+            <h2 class="text-2xl font-bold text-white font-mono mb-6 uppercase">{finalCta.title}</h2>
+            <form class="flex flex-col md:flex-row gap-4">
+                <input type="text" placeholder="ENTER_SHOP_ID" class="bg-slate-900 border border-slate-700 text-white px-4 py-3 font-mono text-sm focus:border-emerald-500 outline-none w-64" />
+                <button class="bg-emerald-600 text-white px-8 py-3 font-bold font-mono uppercase text-sm hover:bg-emerald-500 transition-colors flex items-center gap-2 group">
+                    <span class="text-emerald-300 group-hover:animate-pulse">&gt;_</span>
+                    Initialize
+                </button>
+            </form>
+        </div>
+    </div>
+</section>

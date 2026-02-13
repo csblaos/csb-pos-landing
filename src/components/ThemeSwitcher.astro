@@ -1,11 +1,19 @@
 ---
 ---
-<div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2 group">
-    <!-- Theme Options (Hidden by default, shown on hover/focus of parent) -->
-    <div class="flex flex-col gap-2 mb-2 translate-y-10 opacity-0 invisible group-hover:translate-y-0 group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out">
+<div id="theme-wrapper" class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2 group">
+    <!-- Backdrop Overlay (Visible only when active) -->
+    <div id="theme-overlay" class="fixed inset-0 bg-black/10 backdrop-blur-[1px] opacity-0 invisible transition-all duration-300 z-[-1]" aria-hidden="true"></div>
+
+    <!-- Theme Options -->
+    <div id="theme-menu" class="flex flex-col gap-2 mb-4 translate-y-10 opacity-0 invisible transition-all duration-300 ease-out max-h-[70vh] overflow-y-auto p-4 bg-white/90 backdrop-blur-xl rounded-2xl border border-slate-200 shadow-2xl w-72">
+        <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 px-2 sticky top-0 bg-white/90 backdrop-blur-xl pb-2 z-10 flex justify-between items-center">
+            <span>Select Theme</span>
+            <span class="text-[10px] bg-slate-100 px-2 py-1 rounded text-slate-500 hidden md:inline-block">ESC to close</span>
+        </div>
+
         <button 
             data-set-theme="growth"
-            class="px-4 py-3 bg-white hover:bg-blue-50 text-gray-800 rounded-xl shadow-xl shadow-blue-900/10 flex items-center gap-3 border border-gray-100 transition-all hover:-translate-x-1"
+            class="px-4 py-3 bg-white hover:bg-blue-50 text-gray-800 rounded-xl shadow-sm hover:shadow-md flex items-center gap-3 border border-slate-100 transition-all shrink-0"
             aria-label="Select Online Growth Theme">
             <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white text-xs font-bold">Pro</div>
             <div class="text-left">
@@ -16,7 +24,7 @@
 
         <button 
             data-set-theme="social"
-            class="px-4 py-3 bg-white hover:bg-orange-50 text-gray-800 rounded-xl shadow-xl shadow-orange-900/10 flex items-center gap-3 border border-gray-100 transition-all hover:-translate-x-1"
+            class="px-4 py-3 bg-white hover:bg-orange-50 text-gray-800 rounded-xl shadow-sm hover:shadow-md flex items-center gap-3 border border-slate-100 transition-all shrink-0"
             aria-label="Select Social Commerce Theme">
             <div class="w-8 h-8 rounded-lg bg-orange-600 flex items-center justify-center text-white text-xs font-bold">Soc</div>
             <div class="text-left">
@@ -27,7 +35,7 @@
 
         <button 
             data-set-theme="premium"
-            class="px-4 py-3 bg-white hover:bg-emerald-50 text-gray-800 rounded-xl shadow-xl shadow-emerald-900/10 flex items-center gap-3 border border-gray-100 transition-all hover:-translate-x-1"
+            class="px-4 py-3 bg-white hover:bg-emerald-50 text-gray-800 rounded-xl shadow-sm hover:shadow-md flex items-center gap-3 border border-slate-100 transition-all shrink-0"
             aria-label="Select Premium Brand Theme">
             <div class="w-8 h-8 rounded-lg bg-emerald-700 flex items-center justify-center text-white text-xs font-bold serif">Pre</div>
             <div class="text-left">
@@ -35,53 +43,212 @@
                 <div class="text-[10px] text-gray-500">Sophisticated</div>
             </div>
         </button>
+
+        <button 
+            data-set-theme="web3"
+            class="px-4 py-3 bg-white hover:bg-cyan-50 text-gray-800 rounded-xl shadow-sm hover:shadow-md flex items-center gap-3 border border-slate-100 transition-all shrink-0"
+            aria-label="Select Web3 Pulse Theme">
+            <div class="w-8 h-8 rounded-lg bg-cyan-500 flex items-center justify-center text-white text-xs font-bold font-mono">W3</div>
+            <div class="text-left">
+                <div class="text-sm font-bold">Web3 Pulse</div>
+                <div class="text-[10px] text-gray-500">Futuristic</div>
+            </div>
+        </button>
+
+        <button 
+            data-set-theme="neobrutal"
+            class="px-4 py-3 bg-white hover:bg-yellow-50 text-gray-800 rounded-xl shadow-sm hover:shadow-md flex items-center gap-3 border border-slate-100 transition-all shrink-0"
+            aria-label="Select Neo Brutal Theme">
+            <div class="w-8 h-8 bg-[#facc15] border-2 border-black flex items-center justify-center text-black text-xs font-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">NB</div>
+            <div class="text-left">
+                <div class="text-sm font-black uppercase">Neo Brutal</div>
+                <div class="text-[10px] text-gray-500">High Contrast</div>
+            </div>
+        </button>
+
+        <button 
+            data-set-theme="editorial"
+            class="px-4 py-3 bg-[#fffbeb] hover:bg-[#fff7ed] text-gray-800 rounded-sm shadow-sm hover:shadow-md flex items-center gap-3 border border-[#e7e5e4] transition-all shrink-0"
+            aria-label="Select Editorial Theme">
+            <div class="w-8 h-8 bg-[#1f2937] flex items-center justify-center text-[#fffbeb] text-xs font-serif italic">Ed</div>
+            <div class="text-left">
+                <div class="text-sm font-serif">Editorial</div>
+                <div class="text-[10px] text-gray-500">Elegant</div>
+            </div>
+        </button>
+
+        <button 
+            data-set-theme="friendly"
+            class="px-4 py-3 bg-[#f5f3ff] hover:bg-[#ede9fe] text-gray-800 rounded-3xl shadow-sm hover:shadow-md flex items-center gap-3 border border-transparent transition-all shrink-0"
+            aria-label="Select Friendly Theme">
+            <div class="w-8 h-8 rounded-full bg-[#6366f1] flex items-center justify-center text-white text-xs font-bold">Fr</div>
+            <div class="text-left">
+                <div class="text-sm font-bold text-[#3730a3]">Friendly</div>
+                <div class="text-[10px] text-[#6b7280]">Playful SaaS</div>
+            </div>
+        </button>
+
+        <!-- Theme 8: Zen -->
+        <button data-set-theme="zen" class="px-4 py-3 bg-white hover:bg-neutral-50 text-neutral-600 rounded-sm shadow-sm hover:shadow-md flex items-center gap-3 border border-neutral-200 transition-all shrink-0">
+            <div class="w-8 h-8 bg-neutral-100 flex items-center justify-center text-neutral-900 text-xs font-light">Zen</div>
+            <div class="text-left">
+                <div class="text-sm font-medium">Minimal Zen</div>
+                <div class="text-[10px] text-neutral-400">Clean & Calm</div>
+            </div>
+        </button>
+
+        <!-- Theme 9: Dark Ops -->
+        <button data-set-theme="darkops" class="px-4 py-3 bg-slate-900 hover:bg-slate-800 text-slate-300 rounded shadow-sm hover:shadow-md border border-slate-700 transition-all shrink-0">
+            <div class="w-8 h-8 bg-emerald-900/50 border border-emerald-500/50 flex items-center justify-center text-emerald-400 text-xs font-mono">OP</div>
+            <div class="text-left">
+                <div class="text-sm font-mono font-bold text-emerald-500">Dark Ops</div>
+                <div class="text-[10px] text-slate-500">Dashboard</div>
+            </div>
+        </button>
+
+        <!-- Theme 10: Aurora -->
+        <button data-set-theme="aurora" class="px-4 py-3 bg-black hover:bg-zinc-900 text-white rounded-2xl shadow-sm hover:shadow-md border border-white/10 flex items-center gap-3 transition-all shrink-0 overflow-hidden relative">
+            <div class="absolute inset-0 bg-gradient-to-r from-violet-600/20 to-fuchsia-600/20 pointer-events-none"></div>
+            <div class="w-8 h-8 rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center text-white text-xs font-bold relative z-10">Au</div>
+            <div class="text-left relative z-10">
+                <div class="text-sm font-bold">Aurora</div>
+                <div class="text-[10px] text-white/50">Gradient Glass</div>
+            </div>
+        </button>
+
+        <!-- Theme 11: Clay -->
+        <button data-set-theme="clay" class="px-4 py-3 bg-[#eef2f6] hover:bg-[#dfe4ea] text-slate-600 rounded-[20px] shadow-sm hover:shadow-md flex items-center gap-3 border-none transition-all shrink-0">
+            <div class="w-8 h-8 rounded-full bg-[#eef2f6] shadow-[inset_2px_2px_5px_#cad4e0,inset_-2px_-2px_5px_#ffffff] flex items-center justify-center text-red-400 text-xs font-bold">Cl</div>
+            <div class="text-left">
+                <div class="text-sm font-bold text-slate-700">Clay Soft</div>
+                <div class="text-[10px] text-slate-400">Neumorphism</div>
+            </div>
+        </button>
+
+        <!-- Theme 12: Hologram -->
+        <button data-set-theme="hologram" class="px-4 py-3 bg-black hover:bg-zinc-900 text-cyan-400 rounded-none shadow-sm hover:shadow-md flex items-center gap-3 border border-cyan-500/50 transition-all shrink-0">
+            <div class="w-8 h-8 bg-black border border-fuchsia-500 flex items-center justify-center text-fuchsia-500 text-xs font-mono">HO</div>
+            <div class="text-left">
+                <div class="text-sm font-bold font-orbitron">Hologram</div>
+                <div class="text-[10px] text-cyan-600 font-mono">Cyberpunk</div>
+            </div>
+        </button>
+
+        <!-- Theme 13: Corporate -->
+        <button data-set-theme="corporate" class="px-4 py-3 bg-white hover:bg-slate-50 text-slate-700 rounded shadow-sm hover:shadow-md border border-slate-300 flex items-center gap-3 transition-all shrink-0">
+            <div class="w-8 h-8 bg-blue-900 rounded-sm flex items-center justify-center text-white text-xs font-bold">Co</div>
+            <div class="text-left">
+                <div class="text-sm font-bold text-blue-900">Corporate</div>
+                <div class="text-[10px] text-slate-500">Trust & Safety</div>
+            </div>
+        </button>
+
+        <!-- Theme 14: Flash Sale -->
+        <button data-set-theme="flashsale" class="px-4 py-3 bg-red-600 hover:bg-red-700 text-white transform hover:scale-105 shadow-sm hover:shadow-md border-b-4 border-yellow-400 flex items-center gap-3 transition-all shrink-0">
+            <div class="w-8 h-8 bg-yellow-400 text-red-900 font-black italic flex items-center justify-center text-xs">SALE</div>
+            <div class="text-left">
+                <div class="text-sm font-black italic uppercase">Flash Sale</div>
+                <div class="text-[10px] text-yellow-200 uppercase font-bold">Urgent!</div>
+            </div>
+        </button>
+
+         <!-- Theme 15: Mono -->
+        <button data-set-theme="mono" class="px-4 py-3 bg-white hover:bg-black hover:text-white text-black rounded-none shadow-none border border-black flex items-center gap-3 transition-all shrink-0 group/mono mb-2">
+            <div class="w-8 h-8 bg-black text-white group-hover/mono:bg-white group-hover/mono:text-black flex items-center justify-center text-xs font-serif italic">Mo</div>
+            <div class="text-left">
+                <div class="text-sm font-serif italic">Mono Premium</div>
+                <div class="text-[10px] text-neutral-400 group-hover/mono:text-neutral-500 uppercase tracking-widest">Minimalist</div>
+            </div>
+        </button>
     </div>
 
     <!-- Main Toggle Button -->
-    <button class="bg-[var(--brand-primary)] text-white p-4 rounded-full shadow-xl hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center w-14 h-14" aria-label="Change Theme">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-palette"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+    <button id="theme-toggle-btn" class="bg-slate-900 text-white border-2 border-white/20 p-4 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center w-16 h-16 hover:bg-black hover:border-white z-50 relative" aria-label="Change Theme" aria-expanded="false" aria-controls="theme-menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-palette"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
     </button>
 </div>
 
 <script>
+    const wrapper = document.getElementById('theme-wrapper');
+    const overlay = document.getElementById('theme-overlay');
+    const mainBtn = document.getElementById('theme-toggle-btn');
     const themeButtons = document.querySelectorAll('[data-set-theme]');
     const htmlObj = document.documentElement;
-    const mainBtn = document.querySelector('button[aria-label="Change Theme"]');
-    const menu = document.querySelector('.group > div');
 
-    // Mobile Toggle
+    function openMenu() {
+        wrapper?.classList.add('mobile-active');
+        mainBtn?.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeMenu() {
+        wrapper?.classList.remove('mobile-active');
+        mainBtn?.setAttribute('aria-expanded', 'false');
+    }
+
+    function toggleMenu() {
+        if (wrapper?.classList.contains('mobile-active')) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    }
+
+    // Toggle Button Click
     mainBtn?.addEventListener('click', (e) => {
-        // Toggle visibility classes manually for click support
-        const wrapper = mainBtn.parentElement;
-        wrapper?.classList.toggle('mobile-active');
+        e.stopPropagation();
+        toggleMenu();
     });
 
-    // Close on click outside
+    // Close on Overlay Click
+    overlay?.addEventListener('click', () => {
+        closeMenu();
+    });
+
+    // Close on Text selection or any other click outside (just in case)
     document.addEventListener('click', (e) => {
-        const wrapper = document.querySelector('.group');
         if (!wrapper?.contains(e.target as Node)) {
-            wrapper?.classList.remove('mobile-active');
+            closeMenu();
         }
     });
 
+    // Close on Esc Key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeMenu();
+        }
+    });
+
+    // Theme Selection Logic
     themeButtons.forEach(btn => {
         btn.addEventListener('click', () => {
             const newTheme = btn.getAttribute('data-set-theme');
-            
-            // Update DOM - Always set the attribute so specific selectors work
-            htmlObj.setAttribute('data-theme', newTheme);
-            
-            // Persist
-            localStorage.setItem('theme', newTheme);
+            if (newTheme) {
+                htmlObj.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            }
+            // Auto close after selection
+            closeMenu();
         });
     });
 </script>
 
 <style>
-    /* Mobile Active State Support */
-    .mobile-active > div {
+    /* Active State Control */
+    .mobile-active #theme-menu {
         transform: translateY(0);
         opacity: 1;
         visibility: visible;
+        pointer-events: auto;
+    }
+    
+    .mobile-active #theme-overlay {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    /* Default state adjustments */
+    #theme-menu, #theme-overlay {
+        pointer-events: none; /* Prevent clicking when hidden */
     }
 </style>

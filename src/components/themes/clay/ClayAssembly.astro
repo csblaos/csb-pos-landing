@@ -1,0 +1,33 @@
+---
+import ClayHero from './ClayHero.astro';
+import ClayComponents from './ClayComponents.astro';
+---
+
+<div class="font-nunito bg-[#eef2f6] min-h-screen text-slate-600">
+    <!-- Clay Nav -->
+    <nav class="fixed top-6 left-0 w-full z-40 px-6">
+        <div class="max-w-5xl mx-auto h-16 rounded-[20px] bg-[#eef2f6] shadow-[10px_10px_20px_#cad4e0,-10px_-10px_20px_#ffffff] flex justify-between items-center px-8 border border-white/50">
+            <div class="font-extrabold text-slate-700 text-lg flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-red-400"></span>
+                ClayPOS
+            </div>
+
+            <div class="hidden md:flex gap-8 font-bold text-slate-500 text-sm">
+                <a href="#clay-features" class="hover:text-red-400 transition-colors">Features</a>
+                <a href="#clay-pricing" class="hover:text-red-400 transition-colors">Pricing</a>
+                <a href="#clay-testimonials" class="hover:text-red-400 transition-colors">Reviews</a>
+            </div>
+
+            <button class="px-6 py-2 rounded-[12px] bg-[#eef2f6] text-xs font-bold text-slate-500 uppercase tracking-wider shadow-[3px_3px_6px_#cad4e0,-3px_-3px_6px_#ffffff] hover:scale-95 transition-transform active:shadow-[inset_2px_2px_5px_#cad4e0,inset_-2px_-2px_5px_#ffffff]">
+                Login
+            </button>
+        </div>
+    </nav>
+
+    <ClayHero />
+    <ClayComponents />
+
+    <footer class="bg-[#eef2f6] py-12 text-center text-slate-400 font-bold">
+        <p>Soft UI Design System v2.0</p>
+    </footer>
+</div>

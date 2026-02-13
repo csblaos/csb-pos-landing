@@ -1,0 +1,127 @@
+---
+import { content } from '../../../data/content';
+
+const { features, pricing, painPoints, solutions, socialProof, faq, finalCta } = content;
+---
+
+<!-- Pain & Solutions -->
+<section class="py-32 bg-white font-theme">
+    <div class="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-24 items-center">
+        <div>
+            <span class="block w-8 h-px bg-neutral-900 mb-8"></span>
+            <h2 class="text-3xl font-light text-neutral-900 mb-12">The Friction.</h2>
+            <div class="space-y-12">
+                {painPoints.map((pain) => (
+                    <div class="group">
+                        <p class="text-neutral-500 font-light group-hover:text-neutral-900 transition-colors duration-500">{pain}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+        <div class="bg-neutral-50 p-12 lg:p-16">
+            <h2 class="text-3xl font-light text-neutral-900 mb-12">The Flow.</h2>
+            <ul class="space-y-6">
+                {solutions.map((sol) => (
+                    <li class="flex gap-4 items-baseline text-neutral-700 font-light">
+                        <span class="w-1.5 h-1.5 rounded-full bg-neutral-900 shrink-0"></span>
+                        {sol}
+                    </li>
+                ))}
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Features -->
+<section id="zen-features" class="py-32 bg-neutral-50 font-theme">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-3 gap-px bg-neutral-200 border border-neutral-200">
+            {features.map((feature, i) => (
+                <div class="bg-white p-12 hover:bg-neutral-50 transition-colors duration-500 group">
+                    <div class="text-neutral-300 text-4xl mb-8 font-light group-hover:text-neutral-900 transition-colors">{String(i+1).padStart(2, '0')}</div>
+                    <h3 class="text-lg font-medium text-neutral-900 mb-4 tracking-wide">{feature.title}</h3>
+                    <p class="text-neutral-500 font-light leading-relaxed text-sm">{feature.description}</p>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<!-- Pricing -->
+<section id="zen-pricing" class="py-32 bg-white font-theme">
+    <div class="max-w-5xl mx-auto px-6">
+        <div class="text-center mb-24">
+            <h2 class="text-3xl font-light text-neutral-900 mb-4">Essence</h2>
+            <p class="text-neutral-400 text-sm tracking-widest uppercase">Transparent Pricing</p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+            {pricing.plans.map(plan => (
+                <div class={`p-8 border transition-all duration-500 ${plan.recommended ? 'border-neutral-900 bg-neutral-900' : 'border-neutral-100 hover:border-neutral-300'}`}>
+                    <div class="mb-8">
+                        <h3 class={`text-sm tracking-widest uppercase mb-2 ${plan.recommended ? 'text-white' : 'text-neutral-900'}`}>{plan.name}</h3>
+                        <p class={`text-xs ${plan.recommended ? 'text-neutral-400' : 'text-neutral-400'}`}>{plan.description}</p>
+                    </div>
+                    
+                    <div class={`text-3xl font-light mb-8 ${plan.recommended ? 'text-white' : 'text-neutral-900'}`}>{plan.price}</div>
+                    
+                    <ul class="space-y-4 mb-12">
+                        {plan.features.map(feature => (
+                            <li class={`text-sm font-light flex gap-3 ${plan.recommended ? 'text-neutral-300' : 'text-neutral-500'}`}>
+                                <span class="opacity-50">—</span> {feature}
+                            </li>
+                        ))}
+                    </ul>
+
+                    <button class={`w-full py-4 text-xs tracking-[0.2em] uppercase transition-colors ${
+                        plan.recommended 
+                        ? 'bg-white text-neutral-900 hover:bg-neutral-200' 
+                        : 'bg-neutral-50 text-neutral-900 hover:bg-neutral-100'
+                    }`}>
+                        {plan.cta}
+                    </button>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section id="zen-testimonials" class="py-32 bg-neutral-50 font-theme">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+        <div class="grid md:grid-cols-3 gap-12">
+            {socialProof.testimonials.map(t => (
+                <div>
+                    <div class="mb-6 opacity-20">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21L14.017 18C14.017 16.0547 15.5938 14.478 17.5391 14.478L18.7754 14.478C19.7827 14.478 20.601 13.6596 20.601 12.6523L20.601 5.92578C20.601 4.91848 19.7827 4.1001 18.7754 4.1001L12.0488 4.1001C11.0415 4.1001 10.2231 4.91848 10.2231 5.92578L10.2231 12.6523C10.2231 12.8711 10.2627 13.0801 10.3345 13.2754L8.33643 18.7837C7.88672 20.0249 8.60156 21.4082 9.88281 21.8042L11.5176 22.3091C12.1812 22.5142 12.8872 22.2031 13.187 21.5791L14.017 21ZM3.79395 21L3.79395 18C3.79395 16.0547 5.37061 14.478 7.31592 14.478L8.55225 14.478C9.55957 14.478 10.3779 13.6596 10.3779 12.6523L10.3779 5.92578C10.3779 4.91848 9.55957 4.1001 8.55225 4.1001L1.82568 4.1001C0.818359 4.1001 0 4.91848 0 5.92578L0 12.6523C0 12.8711 0.0395508 13.0801 0.111328 13.2754L-1.88672 18.7837C-2.33643 20.0249 -1.62158 21.4082 -0.340332 21.8042L1.29443 22.3091C1.95801 22.5142 2.66406 22.2031 2.96387 21.5791L3.79395 21Z" /></svg>
+                    </div>
+                    <p class="text-neutral-600 font-light mb-6 text-sm leading-7">"{t.quote}"</p>
+                    <p class="text-xs uppercase tracking-widest text-neutral-900 font-medium">{t.name}</p>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<!-- FAQ & Footer -->
+<section id="zen-faq" class="py-32 bg-white font-theme border-t border-neutral-100">
+    <div class="max-w-2xl mx-auto px-6 mb-32">
+        <h2 class="text-3xl font-light text-center mb-16">Inquiry</h2>
+        <div class="divide-y divide-neutral-100">
+            {faq.map(item => (
+                <div class="py-8 group cursor-pointer">
+                    <h3 class="text-base text-neutral-900 mb-2 group-hover:text-neutral-600 transition-colors">{item.q}</h3>
+                    <p class="text-neutral-400 font-light text-sm hidden group-hover:block transition-all duration-500 fade-in">{item.a}</p>
+                </div>
+            ))}
+        </div>
+    </div>
+
+    <div class="text-center">
+        <h2 class="text-4xl font-light text-neutral-900 mb-8">{finalCta.title}</h2>
+        <button class="bg-neutral-900 text-white px-10 py-4 text-xs tracking-[0.2em] uppercase hover:bg-neutral-800 transition-colors inline-flex items-center gap-3 group">
+            {finalCta.primaryCta}
+            <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12h16m0 0l-6-6m6 6l-6 6"></path></svg>
+        </button>
+    </div>
+</section>

@@ -1,0 +1,32 @@
+---
+import { content } from '../../../data/content';
+
+const { features } = content;
+---
+
+<section id="neobrutal-features" class="py-24 bg-white font-theme border-t-4 border-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-4xl md:text-6xl font-black text-center text-black mb-16 uppercase tracking-tight">
+            Feature <span class="bg-[#facc15] px-2">List</span>
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {features.map((feature, index) => (
+                <div class="group relative bg-[#fff1f2] border-4 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 transition-all">
+                    
+                    <div class="w-16 h-16 bg-black text-white border-4 border-black flex items-center justify-center text-3xl mb-6 shadow-[4px_4px_0px_0px_#facc15]">
+                        <svg viewBox="0 0 24 24" class="w-8 h-8" fill="currentColor" set:html={feature.icon}></svg>
+                    </div>
+
+                    <h3 class="text-2xl font-black text-black mb-4 uppercase">
+                        {feature.title}
+                    </h3>
+                    
+                    <p class="text-black font-bold text-sm leading-relaxed">
+                        {feature.description}
+                    </p>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>

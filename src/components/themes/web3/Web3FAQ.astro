@@ -1,0 +1,31 @@
+---
+import { content } from '../../../data/content';
+
+const { faq } = content;
+---
+
+<section id="web3-faq" class="py-24 bg-[#050505] font-theme">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-center text-white mb-12 font-mono">
+            System_Inquiries
+        </h2>
+
+        <div class="space-y-4">
+            {faq.map(item => (
+                <details class="group bg-slate-900/30 border border-slate-800 rounded-lg open:border-cyan-900 open:bg-cyan-950/10 transition-all duration-300">
+                    <summary class="flex justify-between items-center cursor-pointer p-6 list-none">
+                        <span class="text-lg font-medium text-slate-200 group-hover:text-cyan-400 transition-colors">
+                            {item.q}
+                        </span>
+                        <span class="text-cyan-500 transition-transform group-open:rotate-180 font-mono">
+                            [+]
+                        </span>
+                    </summary>
+                    <div class="px-6 pb-6 text-slate-400 leading-relaxed border-t border-slate-800/50 pt-4 mt-2">
+                        {item.a}
+                    </div>
+                </details>
+            ))}
+        </div>
+    </div>
+</section>

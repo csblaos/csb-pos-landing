@@ -1,0 +1,35 @@
+---
+import FlashSaleHero from './FlashSaleHero.astro';
+import FlashSaleComponents from './FlashSaleComponents.astro';
+---
+
+<div class="font-roboto-condensed bg-white min-h-screen text-red-900">
+    <!-- FlashSale Nav -->
+    <nav class="fixed top-0 w-full z-40 bg-red-600 text-white border-b-4 border-yellow-400 shadow-xl">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
+            <div class="text-3xl font-black italic uppercase tracking-tighter transform -skew-x-12">
+                Sale<span class="text-yellow-400">POS</span>
+            </div>
+
+            <div class="hidden md:flex gap-8 font-bold uppercase text-lg items-center">
+                <a href="#flashsale-features" class="hover:text-yellow-400 hover:underline decoration-4 underline-offset-4">Deals</a>
+                <a href="#flashsale-pricing" class="hover:text-yellow-400 hover:underline decoration-4 underline-offset-4">Pricing</a>
+                
+                <div class="bg-red-800 px-3 py-1 rounded text-sm font-mono animate-pulse">
+                    02:45:12 LEFT
+                </div>
+            </div>
+
+            <button class="bg-yellow-400 text-red-900 px-6 py-2 font-black uppercase text-sm transform hover:scale-105 shadow-lg shadow-red-900/20">
+                Claim Offer
+            </button>
+        </div>
+    </nav>
+
+    <FlashSaleHero />
+    <FlashSaleComponents />
+
+    <footer class="bg-red-900 py-8 text-center text-white/50 font-bold uppercase text-sm">
+        <p>⚡️ Powered by High Velocity Commerce Engine</p>
+    </footer>
+</div>

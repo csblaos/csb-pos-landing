@@ -1,0 +1,109 @@
+---
+import { content } from '../../../data/content';
+
+const { features, pricing, painPoints, solutions, socialProof, faq, finalCta } = content;
+---
+
+<!-- Pain & Solutions -->
+<section class="py-32 bg-white font-theme">
+    <div class="max-w-[1200px] mx-auto px-6 grid lg:grid-cols-2 gap-24">
+        <div>
+            <h2 class="text-3xl font-serif text-[#1f2937] mb-12 italic">The Challenge.</h2>
+            <ul class="space-y-8">
+                {painPoints.map((pain) => (
+                    <li class="flex gap-6 text-[#4b5563] font-light border-l border-[#e5e7eb] pl-6">
+                        {pain}
+                    </li>
+                ))}
+            </ul>
+        </div>
+        <div>
+            <h2 class="text-3xl font-serif text-[#1f2937] mb-12 italic">The Resolution.</h2>
+            <ul class="space-y-8">
+                {solutions.map((sol) => (
+                    <li class="flex gap-6 text-[#1f2937] font-medium items-center">
+                        <span class="text-[#d97706] font-serif text-2xl">0{Math.floor(Math.random() * 9) + 1}</span>
+                        {sol}
+                    </li>
+                ))}
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Features -->
+<section id="editorial-features" class="py-32 bg-[#fffbeb] font-theme border-t border-[#e5e7eb]">
+    <div class="max-w-[1400px] mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#d1d5db]">
+            {features.map((feature, i) => (
+                <div class="p-12 hover:bg-white transition-colors duration-700">
+                    <div class="text-[#d97706] text-3xl mb-6 font-serif opacity-50">{String(i+1).padStart(2, '0')}.</div>
+                    <h3 class="text-xl font-serif text-[#1f2937] mb-4">{feature.title}</h3>
+                    <p class="text-[#6b7280] font-light leading-loose text-sm">{feature.description}</p>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<!-- Pricing -->
+<section id="editorial-pricing" class="py-32 bg-[#1f2937] text-white font-theme">
+    <div class="max-w-[1000px] mx-auto px-6">
+        <h2 class="text-4xl font-serif text-center mb-24 italic text-[#f3f4f6]">Membership Tiers</h2>
+        
+        <div class="space-y-12">
+            {pricing.plans.map(plan => (
+                <div class="group flex flex-col md:flex-row items-center justify-between py-12 border-b border-gray-700 hover:border-white transition-colors">
+                    <div class="mb-6 md:mb-0">
+                        <h3 class="text-2xl font-serif text-[#f3f4f6]">{plan.name}</h3>
+                        <p class="text-gray-400 font-light text-sm mt-2">{plan.description}</p>
+                    </div>
+                    <div class="flex items-center gap-12">
+                        <div class="text-3xl font-serif italic text-[#d97706]">{plan.price}</div>
+                        <button class="text-xs uppercase tracking-widest border border-white px-8 py-3 hover:bg-white hover:text-black transition-colors">
+                            {plan.cta}
+                        </button>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section id="editorial-testimonials" class="py-32 bg-white font-theme">
+    <div class="max-w-[1000px] mx-auto px-6 text-center">
+        <h2 class="text-xs uppercase tracking-[0.3em] text-[#9ca3af] mb-16">Endorsements</h2>
+        <div class="grid md:grid-cols-3 gap-16">
+            {socialProof.testimonials.map(t => (
+                <div>
+                    <p class="text-xl font-serif italic text-[#374151] mb-6 leading-relaxed">"{t.quote}"</p>
+                    <p class="text-xs uppercase font-bold text-[#d97706] tracking-widest">— {t.name}</p>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<!-- FAQ & Footer -->
+<section id="editorial-faq" class="py-32 bg-[#fffbeb] border-t border-[#e5e7eb] font-theme">
+    <div class="max-w-[800px] mx-auto px-6 mb-32">
+        <h2 class="text-3xl font-serif text-center mb-16 italic">Inquiries</h2>
+        <div class="space-y-8">
+            {faq.map(item => (
+                <div class="pb-8 border-b border-[#d1d5db]">
+                    <h3 class="text-lg font-serif text-[#1f2937] mb-2">{item.q}</h3>
+                    <p class="text-[#6b7280] font-light leading-relaxed">{item.a}</p>
+                </div>
+            ))}
+        </div>
+    </div>
+
+    <div class="text-center">
+        <h2 class="text-4xl md:text-6xl font-serif text-[#1f2937] mb-8">{finalCta.title}</h2>
+        <p class="text-[#4b5563] font-light mb-12 italic">{finalCta.subtitle}</p>
+        <button class="bg-[#d97706] text-white px-12 py-5 font-sans text-xs uppercase tracking-widest hover:bg-[#b45309] transition-colors">
+            {finalCta.primaryCta}
+        </button>
+    </div>
+</section>

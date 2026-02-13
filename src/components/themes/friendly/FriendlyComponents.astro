@@ -1,0 +1,80 @@
+---
+import { content } from '../../../data/content';
+
+const { features, pricing, painPoints, solutions, socialProof, faq, finalCta } = content;
+---
+
+<!-- Features - Bento Grid Style -->
+<section id="friendly-features" class="py-24 bg-white font-theme">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-3 gap-6">
+            {features.map((feature, i) => (
+                <div class={`p-8 rounded-3xl bg-[#f0f9ff] hover:bg-[#e0f2fe] transition-colors ${i === 0 || i === 3 ? 'md:col-span-2 bg-[#f5f3ff] hover:bg-[#ede9fe]' : ''}`}>
+                    <div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-2xl mb-4 shadow-sm">
+                        <svg viewBox="0 0 24 24" class="w-6 h-6" fill="currentColor" set:html={feature.icon}></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-[#3730a3] mb-2">{feature.title}</h3>
+                    <p class="text-[#6b7280]">{feature.description}</p>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<!-- Pricing - Cards -->
+<section id="friendly-pricing" class="py-24 bg-[#f5f3ff] font-theme">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+        <h2 class="text-4xl font-bold text-[#3730a3] mb-16">Simple Pricing 🎈</h2>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+            {pricing.plans.map(plan => (
+                <div class={`p-8 rounded-[2rem] bg-white transition-transform hover:-translate-y-2 ${plan.recommended ? 'shadow-2xl shadow-indigo-200 border-2 border-[#6366f1]' : 'shadow-lg shadow-gray-100'}`}>
+                    {plan.recommended && <span class="bg-[#eff6ff] text-[#3b82f6] px-3 py-1 rounded-full text-xs font-bold uppercase">Popular</span>}
+                    <h3 class="text-2xl font-bold text-[#1f2937] mt-4 mb-2">{plan.name}</h3>
+                    <div class="text-4xl font-bold text-[#6366f1] mb-6">{plan.price}</div>
+                    <ul class="text-left space-y-3 mb-8">
+                        {plan.features.map(f => (
+                            <li class="flex items-center gap-3 text-gray-600 text-sm">
+                                <div class="w-5 h-5 rounded-full bg-[#dbeafe] flex items-center justify-center text-[#2563eb] text-xs">✓</div>
+                                {f}
+                            </li>
+                        ))}
+                    </ul>
+                    <button class="w-full py-4 rounded-xl font-bold bg-[#f3f4f6] text-[#4b5563] hover:bg-[#e5e7eb] transition-colors">
+                        {plan.cta}
+                    </button>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials - Chat Bubbles -->
+<section id="friendly-testimonials" class="py-24 bg-white font-theme overflow-hidden">
+    <div class="max-w-4xl mx-auto px-6 space-y-12">
+        {socialProof.testimonials.map((t, i) => (
+            <div class={`flex ${i % 2 === 0 ? 'justify-start' : 'justify-end'}`}>
+                <div class={`max-w-md p-6 rounded-3xl ${i % 2 === 0 ? 'bg-[#f0fdf4] rounded-bl-sm text-[#14532d]' : 'bg-[#fff7ed] rounded-br-sm text-[#7c2d12]'}`}>
+                    <p class="text-lg mb-4">"{t.quote}"</p>
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm font-bold opacity-50">{t.name[0]}</div>
+                        <span class="font-bold text-sm opacity-75">{t.name}</span>
+                    </div>
+                </div>
+            </div>
+        ))}
+    </div>
+</section>
+
+<!-- Footer -->
+<section class="py-24 bg-[#fff1f2] font-theme text-center">
+    <div class="bg-white max-w-3xl mx-auto p-12 rounded-[3rem] shadow-xl shadow-pink-100">
+        <h2 class="text-3xl font-bold text-[#881337] mb-6">Ready to start?</h2>
+        <form class="flex flex-col md:flex-row gap-4">
+             <input type="text" placeholder="Your Shop Name" class="flex-1 p-4 rounded-xl bg-[#fff1f2] border-transparent focus:ring-2 focus:ring-[#f43f5e] outline-none placeholder-pink-300 text-pink-900" />
+             <button class="bg-[#f43f5e] text-white px-8 py-4 rounded-xl font-bold shadow-lg shadow-pink-300 hover:shadow-pink-400 hover:-translate-y-1 transition-all">
+                Let's Go!
+             </button>
+        </form>
+    </div>
+</section>

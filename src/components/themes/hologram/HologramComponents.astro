@@ -1,0 +1,163 @@
+---
+import { content } from '../../../data/content';
+
+const { features, pricing, painPoints, solutions, socialProof, faq, finalCta } = content;
+---
+
+<!-- Pain & Solutions -->
+<section class="py-24 bg-[#0a0a0a] font-theme relative border-t border-cyan-900/30">
+    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12">
+        <div class="border border-red-900/50 bg-red-950/10 p-8 relative overflow-hidden">
+            <div class="absolute top-0 right-0 p-2 text-xs font-mono text-red-500 border-b border-l border-red-900/50">ERROR_LOG</div>
+            <h2 class="text-2xl font-orbitron font-bold text-red-500 mb-8 glitch-effect">SYSTEM_CRITICAL</h2>
+            <ul class="space-y-4 font-mono text-sm text-red-200/70">
+                {painPoints.map((pain) => (
+                    <li class="flex gap-4">
+                        <span class="text-red-500">></span> {pain}
+                    </li>
+                ))}
+            </ul>
+        </div>
+
+        <div class="border border-cyan-900/50 bg-cyan-950/10 p-8 relative overflow-hidden">
+            <div class="absolute top-0 right-0 p-2 text-xs font-mono text-cyan-500 border-b border-l border-cyan-900/50">PATCH_APPLIED</div>
+             <h2 class="text-2xl font-orbitron font-bold text-cyan-400 mb-8">OPTIMIZATION_COMPLETE</h2>
+            <ul class="space-y-4 font-mono text-sm text-cyan-200/70">
+                {solutions.map((sol) => (
+                    <li class="flex gap-4">
+                        <span class="text-cyan-400">></span> {sol}
+                    </li>
+                ))}
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Features -->
+<section id="hologram-features" class="py-24 bg-black font-theme relative">
+    <div class="absolute inset-0 bg-[linear-gradient(rgba(34,211,238,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.05)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <h2 class="text-4xl font-orbitron font-bold text-center text-white mb-20 uppercase tracking-widest">
+            <span class="text-fuchsia-500 border-b-2 border-fuchsia-500 pb-2">Core</span>_Modules
+        </h2>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+            {features.map((feature, i) => (
+                <div class="bg-black/80 border border-cyan-500/30 p-8 hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(34,211,238,0.3)] transition-all group relative overflow-hidden">
+                    <div class="absolute inset-0 bg-cyan-500/5 translate-y-full group-hover:translate-y-0 transition-transform duration-300 pointer-events-none"></div>
+                    
+                    <div class="text-fuchsia-500 text-4xl mb-6 font-mono group-hover:text-cyan-400 transition-colors">
+                        <svg viewBox="0 0 24 24" class="w-10 h-10" fill="currentColor" set:html={feature.icon}></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4 font-orbitron tracking-wide">{feature.title}</h3>
+                    <p class="text-cyan-100/50 font-mono text-xs leading-relaxed">{feature.description}</p>
+                    
+                    <!-- Corner Accents -->
+                    <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-cyan-500"></div>
+                    <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-cyan-500"></div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<!-- Pricing -->
+<section id="hologram-pricing" class="py-24 bg-[#050505] font-theme border-t border-fuchsia-900/30">
+    <div class="max-w-7xl mx-auto px-6">
+         <div class="text-center mb-20">
+            <h2 class="text-5xl font-orbitron font-bold text-white mb-4">ACCESS_LEVELS</h2>
+            <p class="text-fuchsia-400 font-mono text-sm tracking-[0.3em]">CHOOSE YOUR PROTOCOL</p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8 items-end">
+            {pricing.plans.map(plan => (
+                <div class={`relative p-8 border backdrop-blur-sm ${
+                    plan.recommended 
+                    ? 'bg-fuchsia-950/20 border-fuchsia-500/50 shadow-[0_0_30px_rgba(192,38,211,0.2)]' 
+                    : 'bg-cyan-950/10 border-cyan-900/30 hover:border-cyan-500/50 hover:bg-cyan-950/20'
+                }`}>
+                    {plan.recommended && (
+                         <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-fuchsia-600 text-black font-bold font-mono text-xs px-4 py-1 uppercase tracking-widest">
+                            Recommended
+                         </div>
+                    )}
+                    
+                    <h3 class={`text-xl font-bold mb-4 font-orbitron uppercase ${plan.recommended ? 'text-fuchsia-400' : 'text-cyan-400'}`}>
+                        {plan.name}
+                    </h3>
+                    <div class="text-3xl font-bold text-white mb-8 font-mono">{plan.price}</div>
+                    
+                    <ul class="space-y-4 mb-8">
+                        {plan.features.map(feature => (
+                            <li class="flex gap-3 text-xs font-mono text-gray-400">
+                                <span class={`${plan.recommended ? 'text-fuchsia-500' : 'text-cyan-500'}`}>[+]</span>
+                                {feature}
+                            </li>
+                        ))}
+                    </ul>
+
+                    <button class={`w-full py-4 text-xs font-bold font-mono uppercase tracking-[0.2em] transition-all relative overflow-hidden group ${
+                        plan.recommended 
+                        ? 'bg-fuchsia-600/20 text-fuchsia-400 border border-fuchsia-500 hover:bg-fuchsia-600 hover:text-black' 
+                        : 'bg-transparent text-cyan-400 border border-cyan-500/50 hover:border-cyan-400 hover:text-cyan-300'
+                    }`}>
+                        <span class="relative z-10">{plan.cta}</span>
+                        {plan.recommended && <div class="absolute inset-0 bg-fuchsia-500/20 blur-md group-hover:bg-transparent transition-colors"></div>}
+                    </button>
+                    
+                     <!-- Tech Lines -->
+                    <div class="absolute top-1/2 -left-[1px] w-1 h-8 bg-current opacity-50"></div>
+                    <div class="absolute top-1/2 -right-[1px] w-1 h-8 bg-current opacity-50"></div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section id="hologram-testimonials" class="py-24 bg-black font-theme relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+        <h2 class="text-xs font-mono text-cyan-500 mb-12 uppercase tracking-widest border-b border-cyan-900 w-fit pb-2">User_Transmission_Log</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            {socialProof.testimonials.map(t => (
+                <div class="bg-[#0a0a0a] p-6 border-l-2 border-fuchsia-500 relative">
+                    <div class="absolute top-2 right-2 w-2 h-2 bg-fuchsia-500 rounded-full animate-ping"></div>
+                    <p class="text-gray-400 font-mono text-xs leading-loose mb-4">
+                        <span class="text-fuchsia-500">>></span> "{t.quote}"
+                    </p>
+                    <p class="text-cyan-400 font-bold font-orbitron text-sm uppercase">{t.name}</p>
+                    <p class="text-[10px] text-gray-600 font-mono">ID: {Math.random().toString(36).substr(2, 6).toUpperCase()}</p>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<!-- FAQ & Footer -->
+<section id="hologram-faq" class="py-24 bg-[#050505] font-theme border-t border-cyan-900/30">
+    <div class="max-w-3xl mx-auto px-6 mb-24">
+        <h2 class="text-3xl font-orbitron font-bold text-white mb-12 uppercase text-center">Data_Bank</h2>
+        <div class="space-y-2">
+            {faq.map((item, i) => (
+                <details class="bg-[#0a0a0a] border border-gray-900 group open:border-cyan-500/50 transition-colors">
+                    <summary class="flex justify-between items-center cursor-pointer p-5 font-mono text-xs text-gray-400 uppercase hover:text-cyan-400 transition-colors">
+                        <span><span class="text-cyan-600 mr-4">0{i+1}</span> {item.q}</span>
+                        <span class="text-cyan-500 group-open:rotate-90 transition-transform">▸</span>
+                    </summary>
+                    <div class="p-5 pt-0 text-gray-500 font-mono text-xs leading-relaxed border-t border-gray-900/50 bg-[#0c0c0c]">
+                        {item.a}
+                    </div>
+                </details>
+            ))}
+        </div>
+    </div>
+
+    <div class="text-center relative py-12">
+        <div class="absolute inset-0 bg-gradient-to-r from-cyan-900/10 via-fuchsia-900/10 to-cyan-900/10 blur-xl pointer-events-none"></div>
+        <h2 class="text-2xl md:text-4xl font-orbitron font-bold text-white mb-8 uppercase tracking-widest relative z-10">{finalCta.title}</h2>
+        <button class="px-12 py-4 bg-cyan-600/20 border border-cyan-500 text-cyan-400 font-mono font-bold uppercase hover:bg-cyan-500 hover:text-black transition-all shadow-[0_0_20px_rgba(34,211,238,0.2)] hover:shadow-[0_0_40px_rgba(34,211,238,0.6)] relative z-10">
+            {finalCta.primaryCta}
+        </button>
+    </div>
+</section>

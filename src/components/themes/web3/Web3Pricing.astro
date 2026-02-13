@@ -1,0 +1,65 @@
+---
+import { content } from '../../../data/content';
+
+const { pricing } = content;
+---
+
+<section id="web3-pricing" class="py-24 bg-[#050505] text-white font-theme relative overflow-hidden">
+    <!-- Glows -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-900/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-5xl font-bold mb-4 font-mono">Access_Level</h2>
+            <p class="text-cyan-500 font-mono text-sm tracking-widest uppercase">{pricing.note}</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
+            {pricing.plans.map(plan => (
+                <div class={`relative rounded-2xl p-8 border transition-all duration-500 group ${
+                    plan.recommended 
+                    ? 'bg-slate-900/80 border-cyan-500 shadow-[0_0_50px_rgba(6,182,212,0.15)] scale-105 z-10' 
+                    : 'bg-slate-950/50 border-slate-800 hover:border-slate-600'
+                }`}>
+                    {plan.recommended && (
+                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-cyan-500 text-[#050505] text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider shadow-lg shadow-cyan-500/20">
+                            Recommended
+                        </div>
+                    )}
+
+                    <h3 class={`text-xl font-bold mb-2 font-mono ${plan.recommended ? 'text-cyan-400' : 'text-slate-300'}`}>
+                        {plan.name}
+                    </h3>
+                    <p class="text-xs text-slate-500 mb-8 h-8 font-mono uppercase">{plan.description}</p>
+                    
+                    <div class="mb-8 p-4 bg-black/30 rounded border border-slate-800/50">
+                        <span class="text-4xl font-bold font-mono tracking-tighter">{plan.price}</span>
+                    </div>
+
+                    <ul class="space-y-4 mb-8">
+                        {plan.features.map(feature => (
+                            <li class="flex items-start text-sm text-slate-400">
+                                <span class={`mr-3 mt-0.5 text-xs ${plan.recommended ? 'text-cyan-500' : 'text-slate-600'}`}>▶</span>
+                                {feature}
+                            </li>
+                        ))}
+                    </ul>
+
+                    <button class={`w-full py-4 rounded font-bold uppercase tracking-widest text-xs transition-all duration-300 ${
+                        plan.recommended 
+                        ? 'bg-cyan-600 text-white hover:bg-cyan-500 hover:shadow-[0_0_20px_rgba(6,182,212,0.4)]' 
+                        : 'bg-transparent border border-slate-700 text-slate-400 hover:border-white hover:text-white'
+                    }`}>
+                        {plan.cta}
+                    </button>
+                    
+                    <!-- Decorative Corners -->
+                    <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-current opacity-20 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="absolute top-0 right-0 w-2 h-2 border-t border-r border-current opacity-20 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-current opacity-20 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-current opacity-20 group-hover:opacity-100 transition-opacity"></div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>

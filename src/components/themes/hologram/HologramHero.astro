@@ -1,0 +1,127 @@
+---
+import { content } from '../../../data/content';
+import HeroToast from '../../HeroToast.astro';
+
+const { hero } = content;
+---
+
+<section id="hologram-hero" class="relative min-h-screen flex items-center pt-20 bg-[#050505] overflow-hidden">
+    <!-- Glitch Background Layers -->
+    <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-200 contrast-200 pointer-events-none mix-blend-overlay"></div>
+    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-cyan-900/10 to-fuchsia-900/10 pointer-events-none"></div>
+
+    <!-- Holographic Grid -->
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#22d3ee_1px,transparent_1px),linear-gradient(to_bottom,#22d3ee_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20 animate-pulse pointer-events-none" style="transform: perspective(500px) rotateX(60deg) translateY(-100px) scale(2);"></div>
+
+    <div class="max-w-7xl mx-auto px-6 w-full relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Text Content -->
+        <div class="space-y-8 relative">
+             <div class="absolute -left-4 -top-4 w-8 h-8 border-t-2 border-l-2 border-cyan-500 opacity-50"></div>
+             <div class="absolute -right-4 -bottom-4 w-8 h-8 border-b-2 border-r-2 border-fuchsia-500 opacity-50"></div>
+
+            <div class="inline-flex items-center gap-2 px-2 py-1 border border-cyan-500/50 bg-cyan-950/30 text-cyan-400 font-mono text-xs tracking-widest uppercase">
+                <span class="animate-pulse">●</span> Holo_Interface_v9
+            </div>
+
+            <h1 class="text-5xl md:text-7xl font-bold text-white tracking-tighter leading-none font-orbitron glitch-text" data-text={hero.title_part1 + ' ' + hero.title_part2}>
+                {hero.title_part1} <br/>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-fuchsia-400">{hero.title_part2}</span>
+            </h1>
+
+            <p class="text-lg text-cyan-100/60 font-mono border-l-4 border-fuchsia-500 pl-6 leading-relaxed">
+                {hero.subtitle}
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-6 pt-4">
+                <button class="relative px-8 py-4 bg-cyan-500/10 border border-cyan-500 text-cyan-400 font-bold font-mono text-sm uppercase tracking-widest hover:bg-cyan-500 hover:text-black transition-all group overflow-hidden flex items-center gap-2">
+                    <span class="absolute inset-0 bg-cyan-400/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500"></span>
+                    <svg class="w-4 h-4 relative z-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 11a9 9 0 019 9M4 4a16 16 0 0116 16"/><circle cx="5" cy="19" r="1"/></svg>
+                    <span class="relative z-10">{hero.primaryCta}</span>
+                </button>
+                <button class="px-8 py-4 bg-transparent border border-fuchsia-500/50 text-fuchsia-400 font-bold font-mono text-sm uppercase tracking-widest hover:border-fuchsia-400 hover:text-fuchsia-300 transition-all flex items-center gap-2">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>
+                    {hero.secondaryCta}
+                </button>
+            </div>
+        </div>
+
+        <!-- 3D Hologram Effect Container -->
+        <div class="relative hidden lg:block h-[500px] w-full perspective-1000">
+            <div class="absolute inset-0 bg-gradient-to-b from-cyan-500/20 to-fuchsia-500/20 blur-3xl rounded-full opacity-30 animate-pulse"></div>
+            
+            <div class="relative w-full h-full border border-cyan-500/30 bg-black/40 backdrop-blur-sm p-8 clip-path-polygon flex items-center justify-center group overflow-hidden">
+                <!-- Scanline -->
+                <div class="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(34,211,238,0.1)_50%)] bg-[size:100%_4px] pointer-events-none z-20"></div>
+                <div class="absolute top-0 left-0 w-full h-2 bg-cyan-400/30 blur shadow-[0_0_10px_#22d3ee] animate-scanline z-20"></div>
+
+                <div class="text-center space-y-4 relative z-10">
+                    <div class="text-6xl font-orbitron font-bold text-white drop-shadow-[0_0_10px_rgba(34,211,238,0.8)] animate-pulse">
+                        <span class="text-cyan-400">85</span>%
+                    </div>
+                    <div class="text-sm font-mono text-fuchsia-400 uppercase tracking-widest">Efficiency_Rating</div>
+                </div>
+
+                 <div class="absolute bottom-12 left-1/2 -translate-x-1/2 w-3/4">
+                    <HeroToast />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .perspective-1000 { perspective: 1000px; }
+    .clip-path-polygon {
+        clip-path: polygon(
+            0 0, 100% 0, 100% 85%, 95% 100%, 0 100%, 0 15%
+        );
+    }
+    @keyframes scanline {
+        0% { transform: translateY(-100%); }
+        100% { transform: translateY(500px); }
+    }
+    .animate-scanline {
+        animation: scanline 3s linear infinite;
+    }
+    .glitch-text {
+        position: relative;
+    }
+    .glitch-text::before,
+    .glitch-text::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #050505;
+    }
+    .glitch-text::before {
+        left: 2px;
+        text-shadow: -1px 0 #00ffff;
+        clip: rect(44px, 450px, 56px, 0);
+        animation: glitch-anim-1 5s infinite linear alternate-reverse;
+    }
+    .glitch-text::after {
+        left: -2px;
+        text-shadow: -1px 0 #ff00ff;
+        clip: rect(44px, 450px, 56px, 0);
+        animation: glitch-anim-2 5s infinite linear alternate-reverse;
+    }
+    @keyframes glitch-anim-1 {
+        0% { clip: rect(20px, 9999px, 15px, 0); }
+        20% { clip: rect(60px, 9999px, 80px, 0); }
+        40% { clip: rect(10px, 9999px, 85px, 0); }
+        60% { clip: rect(30px, 9999px, 10px, 0); }
+        80% { clip: rect(50px, 9999px, 60px, 0); }
+        100% { clip: rect(70px, 9999px, 30px, 0); }
+    }
+    @keyframes glitch-anim-2 {
+        0% { clip: rect(60px, 9999px, 10px, 0); }
+        20% { clip: rect(10px, 9999px, 50px, 0); }
+        40% { clip: rect(50px, 9999px, 20px, 0); }
+        60% { clip: rect(20px, 9999px, 70px, 0); }
+        80% { clip: rect(80px, 9999px, 40px, 0); }
+        100% { clip: rect(30px, 9999px, 90px, 0); }
+    }
+</style>

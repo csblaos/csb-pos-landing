@@ -1,0 +1,65 @@
+---
+import { content } from '../../../data/content';
+import HeroToast from '../../HeroToast.astro';
+
+const { hero } = content;
+---
+
+<section id="clay-hero" class="relative min-h-screen flex items-center pt-20 bg-[#eef2f6] overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 w-full relative z-10 text-center">
+        <!-- Floating Clay Elements -->
+        <div class="absolute top-20 left-10 w-24 h-24 rounded-[30px] bg-[#eef2f6] shadow-[20px_20px_60px_#cad4e0,-20px_-20px_60px_#ffffff] animate-float hidden lg:block"></div>
+        <div class="absolute bottom-40 right-10 w-32 h-32 rounded-full bg-[#eef2f6] shadow-[20px_20px_60px_#cad4e0,-20px_-20px_60px_#ffffff] animate-float delay-1000 hidden lg:block"></div>
+
+        <div class="max-w-3xl mx-auto space-y-12">
+            
+            <!-- Soft Badge -->
+            <div class="inline-flex items-center gap-2 px-6 py-2 rounded-[20px] bg-[#eef2f6] shadow-[inset_5px_5px_10px_#cad4e0,inset_-5px_-5px_10px_#ffffff] animate-fade-in-up">
+                <span class="w-2 h-2 rounded-full bg-red-400 shadow-[0_0_10px_rgba(248,113,113,0.5)]"></span>
+                <span class="text-sm font-bold text-slate-500 uppercase tracking-wide">Soft UI Beta 2.0</span>
+            </div>
+
+            <!-- Headline -->
+            <h1 class="text-5xl md:text-7xl font-extrabold text-slate-700 leading-tight animate-fade-in-up delay-100">
+                {hero.title_part1} <br/>
+                <span class="text-red-400">{hero.title_part2}</span>
+            </h1>
+
+            <!-- Subheadline -->
+            <p class="text-xl text-slate-500 font-bold max-w-xl mx-auto leading-relaxed animate-fade-in-up delay-200">
+                {hero.subtitle}
+            </p>
+
+            <!-- CTAs -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-8 animate-fade-in-up delay-300">
+                <button class="px-10 py-5 rounded-[20px] bg-[#eef2f6] text-red-500 font-bold uppercase tracking-wider shadow-[10px_10px_20px_#cad4e0,-10px_-10px_20px_#ffffff] hover:shadow-[inset_5px_5px_10px_#cad4e0,inset_-5px_-5px_10px_#ffffff] hover:scale-95 transition-all duration-300 flex items-center justify-center gap-3">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    {hero.primaryCta}
+                </button>
+                <button class="px-10 py-5 rounded-[20px] bg-[#eef2f6] text-slate-500 font-bold uppercase tracking-wider border-2 border-slate-200 hover:border-slate-300 transition-colors flex items-center justify-center gap-3">
+                    {hero.secondaryCta}
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v4z"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="absolute bottom-12 right-6">
+        <HeroToast />
+    </div>
+</section>
+
+<style>
+    .animate-fade-in-up {
+        animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        opacity: 0;
+        transform: translateY(40px) scale(0.9);
+    }
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+
+    @keyframes fadeInUp {
+        to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+</style>

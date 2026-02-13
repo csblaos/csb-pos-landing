@@ -1,0 +1,33 @@
+---
+import HologramHero from './HologramHero.astro';
+import HologramComponents from './HologramComponents.astro';
+---
+
+<div class="font-orbitron bg-black min-h-screen text-gray-300 selection:bg-cyan-500 selection:text-black">
+    <!-- Hologram Nav -->
+    <nav class="fixed top-0 w-full z-40 bg-black/80 backdrop-blur-md border-b border-cyan-900/30">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="text-xl font-bold text-white tracking-tighter uppercase flex items-center gap-2">
+                <span class="w-2 h-8 bg-cyan-500 animate-pulse"></span>
+                HOLO_POS
+            </div>
+
+            <div class="hidden md:flex gap-8 text-xs font-mono text-cyan-500/70 uppercase tracking-widest">
+                <a href="#hologram-features" class="hover:text-cyan-400 hover:drop-shadow-[0_0_5px_cyan] transition-all">[Features]</a>
+                <a href="#hologram-pricing" class="hover:text-cyan-400 hover:drop-shadow-[0_0_5px_cyan] transition-all">[Access]</a>
+                <a href="#hologram-testimonials" class="hover:text-cyan-400 hover:drop-shadow-[0_0_5px_cyan] transition-all">[Logs]</a>
+            </div>
+
+            <button class="px-6 py-2 border border-fuchsia-500/50 text-fuchsia-400 text-xs font-mono uppercase hover:bg-fuchsia-900/20 hover:border-fuchsia-400 transition-all">
+                // LOGIN
+            </button>
+        </div>
+    </nav>
+
+    <HologramHero />
+    <HologramComponents />
+
+    <footer class="bg-black py-12 text-center text-gray-600 font-mono text-xs border-t border-gray-900">
+        <p>SYSTEM_VERSION_12.0.4 • HOLONET_SECURE</p>
+    </footer>
+</div>

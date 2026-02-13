@@ -1,0 +1,33 @@
+---
+import { content } from '../../../data/content';
+
+const { socialProof } = content;
+---
+
+<section id="web3-testimonials" class="py-24 bg-[#0a0a0a] font-theme border-t border-slate-900 border-b">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold text-center text-slate-500 mb-16 font-mono uppercase tracking-widest">
+            // Verified_User_Logs
+        </h2>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+            {socialProof.testimonials.map(t => (
+                <div class="bg-slate-900/50 border border-slate-800 p-8 rounded-xl backdrop-blur-sm relative group hover:border-cyan-500/30 transition-colors">
+                    <div class="absolute -top-3 left-8 text-4xl text-cyan-900 font-serif">"</div>
+                    <p class="text-slate-300 mb-6 italic relative z-10 leading-relaxed">
+                        {t.quote}
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 bg-gradient-to-br from-cyan-900 to-slate-900 rounded-full flex items-center justify-center text-cyan-400 font-bold border border-cyan-500/20">
+                            {t.name.charAt(0)}
+                        </div>
+                        <div>
+                            <p class="text-white font-bold text-sm font-mono">{t.name}</p>
+                            <p class="text-xs text-green-500 font-mono">Status: Online</p>
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>

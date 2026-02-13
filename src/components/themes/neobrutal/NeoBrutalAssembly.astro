@@ -1,0 +1,62 @@
+---
+import NeoBrutalHero from './NeoBrutalHero.astro';
+import NeoBrutalFeatures from './NeoBrutalFeatures.astro';
+import NeoBrutalPricing from './NeoBrutalPricing.astro';
+import NeoBrutalPainSolutions from './NeoBrutalPainSolutions.astro';
+import NeoBrutalTestimonials from './NeoBrutalTestimonials.astro';
+import NeoBrutalFAQ from './NeoBrutalFAQ.astro';
+import NeoBrutalFooterCTA from './NeoBrutalFooterCTA.astro';
+---
+
+<div class="font-sarabun bg-black min-h-screen text-black">
+    <!-- Headers -->
+    <nav class="fixed top-0 w-full z-40 bg-white border-b-4 border-black h-20 flex items-center justify-between px-4 md:px-8">
+        <div class="text-2xl font-black tracking-tighter uppercase italic bg-black text-white px-2">
+            SaaS_POS
+        </div>
+
+        <div class="hidden md:flex gap-8 font-black uppercase text-sm">
+            <a href="#neobrutal-features" class="hover:bg-[#facc15] px-2">Features</a>
+            <a href="#neobrutal-pricing" class="hover:bg-[#facc15] px-2">Price</a>
+            <a href="#neobrutal-testimonials" class="hover:bg-[#facc15] px-2">Proof</a>
+        </div>
+
+        <div class="flex gap-4">
+             <button class="hidden md:block font-black uppercase text-sm border-2 border-black px-4 py-2 hover:bg-black hover:text-white transition-colors">
+                Login
+            </button>
+             <button id="brutal-menu-btn" class="md:hidden font-black text-xl border-2 border-black p-1">
+                MENU
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="brutal-mobile-menu" class="hidden absolute top-20 left-0 w-full bg-[#facc15] border-b-4 border-black p-4 flex-col gap-4">
+             <a href="#neobrutal-features" class="font-black uppercase text-xl border-b-2 border-black">Features</a>
+             <a href="#neobrutal-pricing" class="font-black uppercase text-xl border-b-2 border-black">Price</a>
+             <button class="w-full bg-black text-white font-black uppercase py-4">Login</button>
+        </div>
+    </nav>
+
+    <NeoBrutalHero />
+    <NeoBrutalPainSolutions />
+    <NeoBrutalFeatures />
+    <NeoBrutalPricing />
+    <NeoBrutalTestimonials />
+    <NeoBrutalFAQ />
+    <NeoBrutalFooterCTA />
+
+    <footer class="bg-black py-12 text-center text-white font-bold uppercase tracking-widest">
+        NO RIGHTS RESERVED. JUST KIDDING. © 2024.
+    </footer>
+</div>
+
+<script>
+    const btn = document.getElementById('brutal-menu-btn');
+    const menu = document.getElementById('brutal-mobile-menu');
+
+    btn?.addEventListener('click', () => {
+        menu?.classList.toggle('hidden');
+        menu?.classList.toggle('flex');
+    });
+</script>
