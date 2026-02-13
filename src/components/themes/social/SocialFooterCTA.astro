@@ -1,0 +1,56 @@
+---
+import { content } from '../../../data/content';
+
+const { socialProof, faq, finalCta } = content;
+---
+
+<section class="py-24 bg-[#fff7ed] font-theme">
+    
+    <!-- Testimonials: Chat Bubbles -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-32">
+        <h2 class="text-4xl font-black text-center text-[#431407] mb-16">
+            💬 ร้านค้าว่าไง?
+        </h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            {socialProof.testimonials.map((t, i) => (
+                <div class={`bg-white p-6 rounded-3xl rounded-bl-none border-2 border-[#orange-100] shadow-xl relative ${i % 2 !== 0 ? 'mt-8' : ''}`}>
+                    <div class="absolute -top-4 -right-4 text-6xl opacity-10">❝</div>
+                    <p class="text-[#7c2d12] font-medium leading-relaxed mb-4">
+                        {t.quote}
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-[#fed7aa] rounded-full flex items-center justify-center text-xl">👤</div>
+                        <div class="font-bold text-[#431407]">{t.name}</div>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+
+    <!-- Final CTA: Pop Art Style -->
+    <div class="bg-[#ea580c] py-24 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent bg-[length:20px_20px]"></div>
+        
+        <div class="max-w-5xl mx-auto px-4 relative z-10 text-center">
+            <h2 class="text-5xl md:text-7xl font-black text-white mb-8 drop-shadow-md">
+                {finalCta.primaryCta}
+            </h2>
+            <p class="text-2xl text-orange-100 font-bold mb-12 uppercase tracking-wide">
+                {finalCta.subtitle}
+            </p>
+
+            <div class="bg-white p-8 rounded-[2rem] shadow-2xl max-w-2xl mx-auto transform rotate-1 hover:rotate-0 transition-transform duration-300">
+                <form class="space-y-4" onsubmit="event.preventDefault(); alert('ทีมงานจะรีบติดต่อกลับแบบด่วนจี๋! 🚀');">
+                    <div class="grid md:grid-cols-2 gap-4">
+                        {finalCta.leadForm.fields.map(field => (
+                            <input type="text" placeholder={field} aria-label={field} class="w-full bg-gray-100 border-2 border-transparent focus:border-[#ea580c] px-6 py-4 rounded-xl font-bold text-[#431407] outline-none transition-colors" required />
+                        ))}
+                    </div>
+                    <button type="submit" class="w-full bg-[#431407] text-white text-2xl font-black py-4 rounded-xl hover:bg-black transition-colors shadow-lg">
+                        {finalCta.leadForm.submitLabel} 🔥
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

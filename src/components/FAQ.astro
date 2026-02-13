@@ -1,0 +1,62 @@
+---
+const faqs = [
+  {
+    question: "เริ่มใช้งานยากไหม ถ้าย้ายมาจาก Excel?",
+    answer: "ง่ายมากครับ เรามีทีมงานช่วย Import ข้อมูลสินค้าและลูกค้าจาก Excel ให้ฟรี ไม่ต้องนั่งกรอกเอง เริ่มใช้งานได้ภายใน 1 วัน"
+  },
+  {
+    question: "เชื่อมต่อ Facebook Page ได้กี่เพจ?",
+    answer: "แพ็กเกจ Starter เชื่อมได้ 1 เพจ, Growth เชื่อมได้ 3 เพจ และ Scale เชื่อมได้ไม่จำกัดครับ"
+  },
+  {
+    question: "มีแอดมินหลายคน ใช้งานพร้อมกันได้ไหม?",
+    answer: "ได้แน่นอนครับ ระบบรองรับการทำงานหลายคนพร้อมกัน และสามารถกำหนดสิทธิ์ได้ว่าใครดูยอดขายได้ หรือใครตอบแชตได้อย่างเดียว"
+  },
+  {
+    question: "ถ้ายกเลิก ข้อมูลจะหายไหม?",
+    answer: "ข้อมูลของคุณเป็นของคุณครับ สามารถ Export ข้อมูลยอดขายและลูกค้าออกมาเป็น Excel ได้ตลอดเวลา แม้จะยกเลิกบริการไปแล้ว"
+  }
+];
+---
+
+<section id="faq" class="py-20 bg-[var(--brand-background)] transition-colors duration-300">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-[var(--brand-text)] mb-4">
+        คำถามที่พบบ่อย (FAQ)
+      </h2>
+    </div>
+
+    <div class="space-y-4">
+      {faqs.map((faq, index) => (
+        <div class="border border-[var(--brand-primary)]/10 rounded-lg overflow-hidden bg-[var(--brand-surface)] shadow-sm">
+          <button class="w-full px-6 py-4 text-left bg-[var(--brand-surface)] hover:bg-[var(--brand-background)] focus:outline-none flex justify-between items-center transition-colors group">
+            <span class="font-semibold text-[var(--brand-text)] group-hover:text-[var(--brand-primary)] transition-colors">{faq.question}</span>
+            <span class="ml-6 flex-shrink-0">
+               <svg class="w-5 h-5 text-[var(--brand-text-muted)] transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+               </svg>
+            </span>
+          </button>
+          <div class="px-6 py-4 bg-[var(--brand-background)] text-[var(--brand-text-muted)] hidden border-t border-gray-100">
+            {faq.answer}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  // Simple accordion logic (resused but robust)
+  const buttons = document.querySelectorAll('#faq button');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const content = btn.nextElementSibling;
+      const icon = btn.querySelector('svg');
+      
+      content?.classList.toggle('hidden');
+      icon?.classList.toggle('rotate-180');
+    });
+  });
+</script>

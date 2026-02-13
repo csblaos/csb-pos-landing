@@ -1,0 +1,66 @@
+---
+---
+
+<section id="contact" class="py-20 bg-[var(--brand-primary)] relative overflow-hidden transition-colors duration-500">
+  <!-- Decoration -->
+  <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 opacity-20 pointer-events-none">
+      <div class="absolute -top-24 -left-24 w-96 h-96 bg-white rounded-full blur-3xl mix-blend-overlay"></div>
+      <div class="absolute bottom-0 right-0 w-96 h-96 bg-black rounded-full blur-3xl mix-blend-multiply opacity-50"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="text-white">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">
+          เปลี่ยนเรื่องปวดหัวให้เป็นเรื่องง่าย <br/>
+          ด้วย POSPro วันนี้
+        </h2>
+        <p class="text-lg opacity-90 mb-8">
+          ทดลองใช้ฟรี 14 วัน ไม่ต้องผูกบัตรเครดิต พร้อมทีมงานสอนการใช้งานจนเป็น
+        </p>
+        <ul class="space-y-4 mb-8">
+          <li class="flex items-center opacity-90">
+            <svg class="w-6 h-6 mr-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            ติดตั้งฟรี เริ่มใช้ได้ทันที
+          </li>
+          <li class="flex items-center opacity-90">
+            <svg class="w-6 h-6 mr-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            ข้อมูลปลอดภัยด้วยระบบ Cloud มาตรฐานสากล
+          </li>
+        </ul>
+      </div>
+
+      <div class="bg-[var(--brand-surface)] text-[var(--brand-text)] rounded-2xl p-8 shadow-2xl">
+        <h3 class="text-2xl font-bold mb-6 text-center">รับสิทธิ์ทดลองใช้ฟรี</h3>
+        <form class="space-y-4" onsubmit="event.preventDefault(); alert('ขอบคุณที่สนใจ! ทีมงานจะติดต่อกลับโดยเร็วที่สุด');">
+          <div>
+            <label for="shop-name" class="block text-sm font-medium mb-1">ชื่อร้านค้า</label>
+            <input type="text" id="shop-name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--brand-primary)] focus:border-[var(--brand-primary)] outline-none bg-[var(--brand-background)]" placeholder="เช่น ร้านเสื้อผ้าแฟชั่น" required>
+          </div>
+          <div>
+            <label for="phone" class="block text-sm font-medium mb-1">เบอร์โทรศัพท์ติดต่อ</label>
+            <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--brand-primary)] focus:border-[var(--brand-primary)] outline-none bg-[var(--brand-background)]" placeholder="081-234-5678" required>
+          </div>
+          <div>
+             <label for="channel" class="block text-sm font-medium mb-1">ช่องทางขายหลัก</label>
+             <select id="channel" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--brand-primary)] focus:border-[var(--brand-primary)] outline-none bg-[var(--brand-background)]">
+                 <option value="">เลือกช่องทาง</option>
+                 <option value="facebook">Facebook Page</option>
+                 <option value="line">LINE OA</option>
+                 <option value="tiktok">TikTok Shop</option>
+                 <option value="website">Website</option>
+                 <option value="offline">หน้าร้าน (Offline)</option>
+             </select>
+          </div>
+          <button type="submit" class="w-full bg-[var(--brand-primary)] text-white font-bold py-3 rounded-lg hover:bg-[var(--brand-secondary)] transition-colors shadow-lg">
+            ลงทะเบียนฟรี
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

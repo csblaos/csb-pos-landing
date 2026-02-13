@@ -1,0 +1,55 @@
+---
+import { content } from '../../../data/content';
+
+const { painPoints, solutions, comparison } = content;
+---
+
+<section class="py-16 md:py-32 bg-[#fafaf9] font-theme">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- The Shift (Pain to Solution) -->
+        <h2 class="text-3xl font-serif text-[#1c1917] mb-12 md:mb-16 text-center">The Evolution of Commerce</h2>
+        
+        <div class="grid md:grid-cols-2 gap-12 md:gap-24 mb-20 md:mb-32 items-center">
+            <div class="space-y-8 text-right opacity-60">
+                <h3 class="text-xl font-serif text-[#57534e]">Traditional Challenges</h3>
+                <ul class="space-y-6">
+                    {painPoints.map(pain => (
+                        <li class="text-[#78716c] font-light text-lg">{pain}</li>
+                    ))}
+                </ul>
+            </div>
+            
+            <div class="border-l border-[#ca8a04] pl-12 space-y-8">
+                <h3 class="text-xl font-serif text-[#1c1917]">Intelligent Solutions</h3>
+                <ul class="space-y-6">
+                    {solutions.map(sol => (
+                        <li class="text-[#1c1917] font-light text-xl">{sol}</li>
+                    ))}
+                </ul>
+            </div>
+        </div>
+
+        <!-- Minimalist Comparison -->
+        <div class="bg-white p-6 md:p-16 shadow-[0_0_50px_rgba(0,0,0,0.03)]">
+            <h3 class="text-2xl font-serif text-center mb-16 italic text-[#1c1917]">{comparison.title}</h3>
+            
+            <div class="space-y-8">
+                {comparison.oldWay.points.map((pt, i) => (
+                    <div class="flex flex-col md:grid md:grid-cols-2 gap-4 md:gap-8 items-center border-b border-[#f5f5f4] pb-8 last:border-0 last:pb-0 group hover:bg-[#fafaf9] transition-colors p-4">
+                        <div class="text-center md:text-right text-[#a8a29e] font-light group-hover:text-[#78716c] transition-colors">
+                            {pt}
+                        </div>
+                        <div class="flex items-center gap-4 justify-center md:justify-start">
+                            <div class="w-12 h-[1px] bg-[#ca8a04] hidden md:block"></div>
+                            <div class="text-[#1c1917] font-serif text-lg text-center md:text-left">
+                                {comparison.newWay.points[i]}
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+
+    </div>
+</section>

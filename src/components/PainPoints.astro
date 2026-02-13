@@ -1,0 +1,62 @@
+---
+const painPoints = [
+  {
+    icon: "💬",
+    title: "ตอบแชตไม่ทัน ออเดอร์หลุด",
+    desc: "ลูกค้าทักมาหลายช่องทาง สลับแอปไปมาจนงง",
+    solution: "รวมแชตจากทุกช่องทางในหน้าเดียว"
+  },
+  {
+    icon: "📦",
+    title: "สต็อกไม่ตรง ตัดผิด",
+    desc: "ขายดีจนลืมตัดสต็อก พอจะส่งของดันหมด",
+    solution: "ตัดสต็อกอัตโนมัติทันทีที่มีออเดอร์"
+  },
+  {
+    icon: "📝",
+    title: "สรุปยอดสิ้นวันปวดหัว",
+    desc: "ต้องมานั่งบวกเลขจากแชต สลิปโอนเงินปลอม",
+    solution: "ระบบสรุปยอดและตรวจสอบสลิปให้อัตโนมัติ"
+  },
+  {
+    icon: "🚚",
+    title: "แพ็คของผิด ส่งของพลาด",
+    desc: "จ่าหน้าซองผิด ออเดอร์สลับกัน ลูกค้าด่า",
+    solution: "ระบบพิมพ์ใบปะหน้าอัตโนมัติ ลดความผิดพลาด"
+  }
+];
+---
+
+<section class="py-20 bg-[var(--brand-surface)] transition-colors duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-[var(--brand-text)] mb-4">
+        ปัญหาเดิมๆ ที่ทำให้ร้านออนไลน์ <br class="md:hidden" /> <span class="text-[var(--brand-secondary)]">"โตไม่สุด"</span>
+      </h2>
+      <p class="text-xl text-[var(--brand-text-muted)]">
+        เลิกใช้ Excel จดมือ แล้วให้ระบบช่วยดูแลหลังบ้าน
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {painPoints.map(item => (
+        <div class="group relative p-6 bg-[var(--brand-background)] rounded-2xl border border-transparent hover:border-[var(--brand-primary)]/30 transition-all hover:shadow-lg">
+          <div class="text-4xl mb-6 bg-[var(--brand-surface)] w-14 h-14 rounded-full flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
+            {item.icon}
+          </div>
+          <h3 class="text-lg font-bold text-[var(--brand-text)] mb-2">{item.title}</h3>
+          <p class="text-[var(--brand-text-muted)] text-sm mb-4 leading-relaxed">{item.desc}</p>
+          
+          <div class="mt-auto pt-4 border-t border-[var(--brand-primary)]/10">
+            <p class="text-[var(--brand-primary)] text-sm font-semibold flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              {item.solution}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,102 @@
+---
+const plans = [
+  {
+    name: "Starter",
+    price: "490",
+    period: "/เดือน",
+    description: "สำหรับร้านเริ่มต้น เพิ่งเริ่มขาย",
+    features: [
+      "1 ผู้ใช้งาน",
+      "เชื่อมต่อ 1 Facebook Page",
+      "จัดการสต็อกพื้นฐาน",
+      "500 ออเดอร์/เดือน",
+      "Support ทางแชท"
+    ],
+    cta: "เริ่มใช้งาน Starter",
+    featured: false
+  },
+  {
+    name: "Growth",
+    price: "990",
+    period: "/เดือน",
+    description: "สำหรับร้านค้าที่กำลังเติบโต",
+    features: [
+      "3 ผู้ใช้งาน",
+      "เชื่อมต่อ 3 Facebook / LINE OA",
+      "ระบบดูดสลิปอัตโนมัติ",
+      "ไม่จำกัดออเดอร์",
+      "รายงานยอดขายรายวัน",
+      "Support ทางโทรศัพท์"
+    ],
+    cta: "สมัครแพ็กเกจ Growth",
+    featured: true
+  },
+  {
+    name: "Scale",
+    price: "1,990",
+    period: "/เดือน",
+    description: "สำหรับร้านใหญ่หรือบริษัท",
+    features: [
+      "ไม่จำกัดผู้ใช้งาน",
+      "ไม่จำกัดช่องทางเชื่อมต่อ",
+      "Advanced Reports (กำไร/ต้นทุน)",
+      "API เชื่อมต่อระบบขนส่ง",
+      "ระบบสมาชิก (CRM)",
+      "ผู้ดูแลส่วนตัว (Account Manager)"
+    ],
+    cta: "ติดต่อฝ่ายขาย",
+    featured: false
+  }
+];
+---
+
+<section id="pricing" class="py-20 bg-[var(--brand-background)] transition-colors duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-[var(--brand-text)] mb-4">
+        แพ็กเกจรายเดือนที่โปร่งใส
+      </h2>
+      <p class="text-xl text-[var(--brand-text-muted)]">
+        ยกเลิกได้ทุกเมื่อ ไม่มีสัญญาผูกมัด
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-8 items-start">
+      {plans.map(plan => (
+        <div class={`relative p-8 bg-[var(--brand-surface)] rounded-2xl border transition-all duration-300 ${plan.featured ? 'border-[var(--brand-primary)] shadow-2xl scale-105 z-10' : 'border-gray-200 shadow-sm hover:border-[var(--brand-primary)]/50'} flex flex-col`}>
+          {plan.featured && (
+            <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[var(--brand-primary)] text-white px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wide shadow-md">
+              แนะนำสำหรับร้านค้าออนไลน์
+            </div>
+          )}
+          
+          <h3 class="text-2xl font-bold text-[var(--brand-text)] mb-2">{plan.name}</h3>
+          <p class="text-[var(--brand-text-muted)] text-sm mb-4">{plan.description}</p>
+          <div class="flex items-baseline mb-6">
+            <span class="text-4xl font-bold text-[var(--brand-text)]">฿{plan.price}</span>
+            <span class="text-[var(--brand-text-muted)] ml-2">{plan.period}</span>
+          </div>
+          
+          <ul class="space-y-4 mb-8 flex-grow">
+            {plan.features.map(feature => (
+              <li class="flex items-start">
+                <svg class="h-6 w-6 text-green-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="text-[var(--brand-text-muted)]">{feature}</span>
+              </li>
+            ))}
+          </ul>
+          
+          <a href="#" class={`block w-full py-3 rounded-xl text-center font-bold transition-all ${
+            plan.featured 
+            ? 'bg-[var(--brand-primary)] text-white hover:bg-[var(--brand-secondary)] shadow-lg shadow-[var(--brand-primary)]/30' 
+            : 'bg-[var(--brand-background)] text-[var(--brand-primary)] hover:bg-gray-100 border border-[var(--brand-primary)]/20'
+          }`}>
+            {plan.cta}
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

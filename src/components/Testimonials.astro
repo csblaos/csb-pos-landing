@@ -1,0 +1,50 @@
+---
+const testimonials = [
+  {
+    quote: "เมื่อก่อนต้องนั่งตอบแชตสลับแอปไปมา ออเดอร์หลุดบ่อยมาก พอใช้ POSPro รวมแชตทุุกอย่างไว้ที่เดียว ชีวิตดีขึ้นเยอะเลยค่ะ",
+    author: "คุณมิ้นท์",
+    role: "เจ้าของร้านเสื้อผ้าแฟชั่น (Shopee/Lazada)",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+  },
+  {
+    quote: "ระบบตัดสต็อกแม่นมาก ขายใน LIVE สดก็ตัดทันที ไม่ต้องกลัวขายเกิน ทีมงาน Support ดูแลดีมากสอนจนเป็น",
+    author: "คุณบอย",
+    role: "เจ้าของร้านอุปกรณ์ Gadget",
+    image: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+  },
+  {
+    quote: "ชอบฟีเจอร์ดูดบิลจากสลิปโอนเงิน ช่วยลดเวลาเช็คยอดเงินได้เยอะมาก ไม่ต้องกลัวโดนโกงสลิปปลอมอีกต่อไป",
+    author: "คุณแพร",
+    role: "เจ้าของแบรนด์เครื่องสำอาง",
+    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+  }
+];
+---
+
+<section id="testimonials" class="py-20 bg-[var(--brand-surface)] transition-colors duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-[var(--brand-text)] mb-4">
+        เสียงยืนยันจากร้านค้าออนไลน์กว่า 1,000 ร้าน
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {testimonials.map(item => (
+        <div class="bg-[var(--brand-background)] p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col hover:border-[var(--brand-primary)]/30 transition-all">
+          <div class="flex items-center mb-6">
+            <img src={item.image} alt={item.author} class="w-12 h-12 rounded-full mr-4 object-cover ring-2 ring-[var(--brand-primary)]/20" />
+            <div>
+              <h4 class="font-bold text-[var(--brand-text)]">{item.author}</h4>
+              <p class="text-xs text-[var(--brand-text-muted)]">{item.role}</p>
+            </div>
+          </div>
+          <p class="text-[var(--brand-text-muted)] italic flex-grow">"{item.quote}"</p>
+          <div class="mt-4 flex text-yellow-400">
+            ★★★★★
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+@theme {
+  --font-prompt: 'Prompt', sans-serif;
+  --font-sarabun: 'Sarabun', sans-serif;
+  --font-chakra: 'Chakra Petch', sans-serif;
+  --font-serif: 'Noto Serif Thai', serif;
+
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-20px);
+    }
+
+    100% {
+      transform: translateY(0px);
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Shared Theme Classes */
+  .theme-content {
+    display: none;
+    /* Hide all themes by default */
+  }
+
+  /* Show Active Theme */
+  [data-theme="growth"] #theme-growth {
+    display: block;
+  }
+
+  [data-theme="social"] #theme-social {
+    display: block;
+  }
+
+  [data-theme="premium"] #theme-premium {
+    display: block;
+  }
+
+  /* 
+    THEME 1: ONLINE GROWTH (Blue/White/Slate) 
+    Professional, Clean, Trustworthy
+  */
+  :root,
+  [data-theme="growth"] {
+    --theme-primary: #2563eb;
+    /* blue-600 */
+    --theme-primary-hover: #1d4ed8;
+    /* blue-700 */
+    --theme-secondary: #0f172a;
+    /* slate-900 */
+    --theme-bg: #ffffff;
+    /* white */
+    --theme-surface: #f8fafc;
+    /* slate-50 */
+    --theme-text: #334155;
+    /* slate-700 */
+    --theme-heading: #0f172a;
+    /* slate-900 */
+    --theme-border: #e2e8f0;
+    /* slate-200 */
+    --theme-font: var(--font-prompt);
+  }
+
+  /* 
+    THEME 2: SOCIAL COMMERCE BOOST (Orange/Red/Cream)
+    High Energy, Bold, Urgent
+  */
+  [data-theme="social"] {
+    --theme-primary: #ea580c;
+    /* orange-600 */
+    --theme-primary-hover: #c2410c;
+    /* orange-700 */
+    --theme-secondary: #b91c1c;
+    /* red-700 */
+    --theme-bg: #fff7ed;
+    /* orange-50 */
+    --theme-surface: #ffedd5;
+    /* orange-100 */
+    --theme-text: #7c2d12;
+    /* orange-900 */
+    --theme-heading: #431407;
+    /* orange-950 */
+    --theme-border: #fed7aa;
+    /* orange-200 */
+    --theme-font: var(--font-sarabun);
+  }
+
+  /* 
+    THEME 3: PREMIUM BRAND STORE (Emerald/Gold/Stone)
+    Sophisticated, Elegant, Calm
+  */
+  [data-theme="premium"] {
+    --theme-primary: #047857;
+    /* emerald-700 */
+    --theme-primary-hover: #065f46;
+    /* emerald-800 */
+    --theme-secondary: #ca8a04;
+    /* yellow-600 (Gold) */
+    --theme-bg: #fafaf9;
+    /* stone-50 */
+    --theme-surface: #f5f5f4;
+    /* stone-100 */
+    --theme-text: #57534e;
+    /* stone-600 */
+    --theme-heading: #1c1917;
+    /* stone-900 */
+    --theme-border: #e7e5e4;
+    /* stone-200 */
+    --theme-font: var(--font-prompt);
+    /* Clean sans for premium feel */
+    --theme-font-head: var(--font-serif);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Utility class to use theme variables */
+  .bg-theme-primary {
+    background-color: var(--theme-primary);
+  }
+
+  .text-theme-primary {
+    color: var(--theme-primary);
+  }
+
+  .border-theme-primary {
+    border-color: var(--theme-primary);
+  }
+
+  .font-theme {
+    font-family: var(--theme-font);
+  }
+}

@@ -1,0 +1,105 @@
+---
+---
+<div id="hero-toast-container" class="absolute top-12 right-4 md:top-12 md:right-8 z-30 pointer-events-none transition-all duration-500" aria-live="polite">
+    
+    <div id="hero-toast" class="bg-white/95 backdrop-blur-md border border-green-100 p-4 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex items-center gap-4 transform transition-all duration-700 translate-y-20 opacity-0 scale-95 dark:bg-slate-800 dark:border-slate-700">
+        
+        <!-- Icon -->
+        <div class="relative flex-shrink-0">
+            <div class="w-12 h-12 bg-green-50 rounded-full flex items-center justify-center text-2xl shadow-inner animate-pulse-slow">
+                🛍️
+            </div>
+            <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
+                <span class="w-2 h-2 bg-white rounded-full animate-ping"></span>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div>
+            <h4 class="font-bold text-sm text-slate-800 dark:text-white leading-tight mb-1" id="ht-title">
+                ออเดอร์ใหม่!
+            </h4>
+            <p class="text-xs text-slate-500 dark:text-slate-400 font-medium whitespace-nowrap" id="ht-desc">
+                จาก Facebook • เมื่อสักครู่
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    const toast = document.getElementById('hero-toast');
+    const titleEl = document.getElementById('ht-title');
+    const descEl = document.getElementById('ht-desc');
+    
+    const messages = [
+        { title: 'ออเดอร์ใหม่! 💰', desc: 'จาก Facebook • เมื่อสักครู่' },
+        { title: 'แจ้งเตือนชำระเงิน 💸', desc: 'จาก WhatsApp • 2 วินาทีที่แล้ว' },
+        { title: 'ลูกค้าใหม่ทักแชท 👋', desc: 'จาก LINE OA • 1 นาทีที่แล้ว' }
+    ];
+
+    let currentIndex = 0;
+    const SHOW_DURATION = 4000;
+    const HIDE_DURATION = 2000;
+
+    // Check for reduced motion preference
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    function showToast() {
+        if (!toast || !titleEl || !descEl) return;
+        
+        // Update content
+        const msg = messages[currentIndex];
+        titleEl.textContent = msg.title;
+        descEl.textContent = msg.desc;
+
+        // Show Animation
+        if (!mediaQuery.matches) {
+            toast.classList.remove('translate-y-20', 'opacity-0', 'scale-95');
+            toast.classList.add('translate-y-0', 'opacity-100', 'scale-100');
+        } else {
+            // No movement, just fade
+            toast.classList.remove('opacity-0');
+            toast.classList.add('opacity-100');
+            // Ensure position is static/visible without transform if simplified
+            toast.style.transform = 'none';
+        }
+
+        // Schedule Hide
+        setTimeout(hideToast, SHOW_DURATION);
+    }
+
+    function hideToast() {
+        if (!toast) return;
+
+        // Hide Animation
+        if (!mediaQuery.matches) {
+            toast.classList.add('translate-y-20', 'opacity-0', 'scale-95');
+            toast.classList.remove('translate-y-0', 'opacity-100', 'scale-100');
+        } else {
+             toast.classList.add('opacity-0');
+             toast.classList.remove('opacity-100');
+        }
+
+        // Next Loop
+        currentIndex = (currentIndex + 1) % messages.length;
+        
+        // Schedule Show
+        setTimeout(showToast, HIDE_DURATION);
+    }
+
+    // Start Loop
+    setTimeout(showToast, 1000);
+
+</script>
+
+<style>
+    .animate-pulse-slow {
+        animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: .8; }
+    }
+</style>

@@ -1,0 +1,38 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ThemeSwitcher from '../components/ThemeSwitcher.astro';
+import { content } from '../data/content';
+
+// Theme 1: Online Growth
+import GrowthAssembly from '../components/themes/growth/GrowthAssembly.astro';
+
+// Theme 2: Social Commerce Boost
+import SocialAssembly from '../components/themes/social/SocialAssembly.astro';
+
+// Theme 3: Premium Brand Store
+import PremiumAssembly from '../components/themes/premium/PremiumAssembly.astro';
+
+const { seo } = content;
+---
+
+<Layout title={seo.title}>
+    
+    <!-- Theme 1: Growth (Default) -->
+    <div id="theme-growth" class="theme-content">
+        <GrowthAssembly />
+    </div>
+
+    <!-- Theme 2: Social -->
+    <div id="theme-social" class="theme-content">
+        <SocialAssembly />
+    </div>
+
+    <!-- Theme 3: Premium -->
+    <div id="theme-premium" class="theme-content">
+        <PremiumAssembly />
+    </div>
+
+    <!-- Global Theme Switcher -->
+    <ThemeSwitcher />
+
+</Layout>

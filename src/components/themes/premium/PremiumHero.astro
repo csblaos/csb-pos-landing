@@ -1,0 +1,75 @@
+---
+import { content } from '../../../data/content';
+import HeroToast from '../../HeroToast.astro';
+import ConnectivityAnim from '../../ConnectivityAnim.astro';
+
+const { hero } = content;
+---
+
+<section class="min-h-[90vh] lg:min-h-screen flex items-center bg-[#fafaf9] font-theme relative overflow-hidden py-24 lg:py-0">
+    <!-- Subtle Background Texture -->
+    <div class="absolute inset-0 z-0 opacity-5" style="background-image: url('https://www.transparenttextures.com/patterns/cubes.png');"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            
+            <!-- Content: Elegant Typography -->
+            <div class="order-2 lg:order-1 space-y-8 lg:space-y-10 text-center lg:text-left">
+                <div class="inline-flex items-center gap-4 justify-center lg:justify-start">
+                    <div class="h-[1px] w-12 bg-[#ca8a04]"></div>
+                    <span class="text-[#ca8a04] uppercase tracking-[0.2em] text-sm font-semibold">{hero.badge}</span>
+                </div>
+                
+                <h1 class="text-4xl lg:text-7xl font-serif text-[#1c1917] leading-tight">
+                    {hero.title}
+                </h1>
+
+                <p class="text-lg lg:text-xl text-[#57534e] font-light leading-relaxed max-w-lg mx-auto lg:mx-0">
+                    {hero.subtitle}
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 lg:gap-6 pt-4 justify-center lg:justify-start">
+                    <button class="px-6 lg:px-10 py-4 bg-[#047857] text-white text-sm uppercase tracking-widest hover:bg-[#065f46] transition-colors duration-500 w-full sm:w-auto">
+                        {hero.primaryCta}
+                    </button>
+                    <button class="px-6 lg:px-10 py-4 border border-[#1c1917] text-[#1c1917] text-sm uppercase tracking-widest hover:bg-[#1c1917] hover:text-white transition-colors duration-500 w-full sm:w-auto">
+                        {hero.secondaryCta}
+                    </button>
+                </div>
+            </div>
+
+            <!-- Visual: Minimalist / High-End -->
+            <div class="order-1 lg:order-2 relative">
+                <div class="relative z-10">
+                    <div class="bg-white p-2 shadow-2xl shadow-stone-900/20">
+                         <div class="aspect-[4/3] bg-[#1c1917] relative flex items-center justify-center overflow-hidden">
+                             <!-- Abstract UI representation -->
+                             <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#292524] to-[#0c0a09]"></div>
+                             
+                             <div class="relative z-10 w-3/4 space-y-6">
+                                 <div class="flex justify-between items-end border-b border-stone-700 pb-4">
+                                     <div>
+                                         <div class="text-[#ca8a04] text-xs uppercase tracking-widest mb-1">Total Revenue</div>
+                                         <div class="text-white text-3xl font-serif">฿ 145,200</div>
+                                     </div>
+                                     <div class="text-stone-500 text-xs">Updated Just Now</div>
+                                 </div>
+                                 
+                                 <div class="space-y-4">
+                                     <div class="relative h-40 overflow-hidden rounded bg-[#1c1917]/50 border border-stone-800">
+                                         <ConnectivityAnim />
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                    </div>
+                </div>
+                <!-- Decorative Frame -->
+                <div class="absolute -top-6 -right-6 w-full h-full border border-[#ca8a04] z-0"></div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Toast (Top Right) -->
+    <HeroToast />
+</section>

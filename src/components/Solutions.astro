@@ -1,0 +1,127 @@
+---
+---
+
+<section class="py-20 bg-[var(--brand-background)] overflow-hidden transition-colors duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Solution 1: Unified Chat & Orders -->
+    <div class="flex flex-col lg:flex-row items-center gap-12 mb-20">
+      <div class="lg:w-1/2 order-2 lg:order-1">
+        <div class="relative bg-white rounded-2xl shadow-xl border border-gray-100 p-6 transform rotate-2 hover:rotate-0 transition-transform duration-500">
+          <!-- Mock Chat Interface -->
+          <div class="space-y-4">
+             <div class="flex items-center justify-between border-b pb-4">
+                <span class="font-bold text-gray-700">รวมแชตทุกช่องทาง</span>
+                <div class="flex space-x-2">
+                    <span class="bg-blue-100 text-blue-600 px-2 py-1 rounded text-xs">Facebook</span>
+                    <span class="bg-green-100 text-green-600 px-2 py-1 rounded text-xs">LINE</span>
+                </div>
+             </div>
+             <div class="flex gap-3">
+                 <div class="w-10 h-10 rounded-full bg-gray-200 flex-shrink-0"></div>
+                 <div class="bg-gray-100 p-3 rounded-lg rounded-tl-none w-3/4">
+                     <p class="text-sm text-gray-600">สนใจเสื้อสีขาว ไซส์ M ค่ะ</p>
+                 </div>
+             </div>
+             <div class="flex gap-3 flex-row-reverse">
+                 <div class="w-10 h-10 rounded-full bg-[var(--brand-primary)] flex-shrink-0"></div>
+                 <div class="bg-[var(--brand-primary)] text-white p-3 rounded-lg rounded-tr-none w-3/4">
+                     <p class="text-sm">รับทราบครับ เปิดบิลให้สักครู่นะครับ</p>
+                 </div>
+             </div>
+             <div class="bg-yellow-50 border border-yellow-200 p-3 rounded-lg flex justify-between items-center">
+                 <div>
+                     <p class="text-xs text-yellow-800 font-bold">สร้างบิลอัตโนมัติ #ORD-001</p>
+                     <p class="text-xs text-yellow-700">รอชำระเงิน: 450 บาท</p>
+                 </div>
+                 <button class="bg-yellow-500 text-white text-xs px-3 py-1 rounded">ส่งบิล</button>
+             </div>
+          </div>
+        </div>
+      </div>
+      <div class="lg:w-1/2 order-1 lg:order-2">
+        <h3 class="text-3xl font-bold text-[var(--brand-text)] mb-4">
+          จัดการทุกออเดอร์ในหน้าเดียว <br/>
+          <span class="text-[var(--brand-primary)]">ไม่ต้องสลับแอปให้งง</span>
+        </h3>
+        <p class="text-lg text-[var(--brand-text-muted)] mb-6 leading-relaxed">
+          เชื่อมต่อ Facebook Page, LINE OA และ Website เข้าด้วยกัน 
+          ตอบแชต เปิดบิล ตัดสต็อก ได้ทันทีโดยไม่ต้องออกจากหน้าจอสนทนา
+        </p>
+        <ul class="space-y-3">
+            <li class="flex items-center text-[var(--brand-text-muted)]">
+                <svg class="w-5 h-5 text-green-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                เห็นสถานะบิลชัดเจน (รอจ่าย/จ่ายแล้ว/ส่งแล้ว)
+            </li>
+            <li class="flex items-center text-[var(--brand-text-muted)]">
+                <svg class="w-5 h-5 text-green-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                ระบบดูดสลิปและตรวจสอบยอดเงินอัตโนมัติ
+            </li>
+            <li class="flex items-center text-[var(--brand-text-muted)]">
+                <svg class="w-5 h-5 text-green-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                แจ้งเลขพัสดุผ่านแชตได้ในคลิกเดียว
+            </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Solution 2: Real-time Stock -->
+    <div class="flex flex-col lg:flex-row items-center gap-12">
+      <div class="lg:w-1/2">
+        <h3 class="text-3xl font-bold text-[var(--brand-text)] mb-4">
+          สต็อกตรงเป๊ะ <br/>
+          <span class="text-[var(--brand-primary)]">บอกลาปัญหาขายเกิน</span>
+        </h3>
+        <p class="text-lg text-[var(--brand-text-muted)] mb-6 leading-relaxed">
+          อัปเดตสต็อกทันทีที่มีการขาย ไม่ว่าจะขายผ่านช่องทางไหน ระบบจะตัดสต็อกกลางอัตโนมัติ 
+          แจ้งเตือนทันทีเมื่อของใกล้หมด
+        </p>
+        <div class="flex gap-4">
+             <div class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 flex-1 text-center">
+                 <p class="text-3xl font-bold text-[var(--brand-primary)]">100%</p>
+                 <p class="text-sm text-gray-500">ความแม่นยำสต็อก</p>
+             </div>
+             <div class="p-4 bg-white rounded-xl shadow-sm border border-gray-100 flex-1 text-center">
+                 <p class="text-3xl font-bold text-red-500">0</p>
+                 <p class="text-sm text-gray-500">ออเดอร์ตกหล่น</p>
+             </div>
+        </div>
+      </div>
+      <div class="lg:w-1/2">
+        <div class="bg-[var(--brand-surface)] p-8 rounded-2xl shadow-xl border border-[var(--brand-primary)]/10">
+            <h4 class="font-bold text-gray-900 mb-4 border-b pb-2">สถานะคลังสินค้า</h4>
+            <div class="space-y-4">
+                <div>
+                    <div class="flex justify-between mb-1">
+                        <span class="text-sm font-medium text-gray-700">เสื้อยืดสีขาว (Size M)</span>
+                        <span class="text-sm font-medium text-green-600">พร้อมส่ง (50)</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-green-500 h-2 rounded-full" style="width: 80%"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between mb-1">
+                        <span class="text-sm font-medium text-gray-700">กางเกงยีนส์ (Size 32)</span>
+                        <span class="text-sm font-medium text-yellow-600">ใกล้หมด (5)</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-yellow-500 h-2 rounded-full" style="width: 20%"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between mb-1">
+                        <span class="text-sm font-medium text-gray-700">หมวกแก๊ปสีดำ</span>
+                        <span class="text-sm font-medium text-red-600">สินค้าหมด (0)</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-red-500 h-2 rounded-full" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,61 @@
+---
+const features = [
+  {
+    title: "Facebook & LINE Integration",
+    desc: "ดูดคอมเมนต์ ตอบแชต เปิดบิล ได้ทันที ไม่ต้องสลับแอป",
+    icon: "💬"
+  },
+  {
+    title: "ระบบจัดการลูกค้า (CRM)",
+    desc: "จำลูกค้าได้ รู้ประวัติการซื้อ จัดกลุ่มลูกค้า VIP อัตโนมัติ",
+    icon: "👥"
+  },
+  {
+    title: "Tracking & Fulfillment",
+    desc: "พิมพ์ใบปะหน้า แจ้งเลขพัสดุผ่าน SMS/Email/Chat อัตโนมัติ",
+    icon: "🚚"
+  },
+  {
+    title: "จัดการสต็อกและหน่วยสินค้า",
+    desc: "รองรับสินค้ามีตัวเลือก (สี/ไซส์) ตัดสต็อกแม่นยำ",
+    icon: "📦"
+  },
+  {
+    title: "กำหนดสิทธิ์ทีมงาน",
+    desc: "Addmin ดูได้แค่แชต, Manager ดูยอดขายได้ ป้องกันทุจริต",
+    icon: "🔒"
+  },
+  {
+    title: "รายงานยอดขายแยกช่องทาง",
+    desc: "รู้ทันทีว่า Facebook หรือ LINE ขายดีกว่ากัน",
+    icon: "📊"
+  }
+];
+---
+
+<section id="features" class="py-20 bg-[var(--brand-surface)] transition-colors duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-[var(--brand-text)] mb-4">
+        ฟีเจอร์ที่คนขายออนไลน์ "ต้องมี"
+      </h2>
+      <p class="text-xl text-[var(--brand-text-muted)] max-w-2xl mx-auto">
+        POSPro เติมเต็มทุกการทำงานของร้านค้า Social Commerce
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {features.map(feature => (
+        <div class="bg-[var(--brand-background)] p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-gray-100 group">
+          <div class="w-12 h-12 bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] rounded-lg flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+            {feature.icon}
+          </div>
+          <h3 class="text-xl font-bold text-[var(--brand-text)] mb-3">{feature.title}</h3>
+          <p class="text-[var(--brand-text-muted)] leading-relaxed">
+            {feature.desc}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

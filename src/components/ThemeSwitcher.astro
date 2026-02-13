@@ -1,0 +1,87 @@
+---
+---
+<div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2 group">
+    <!-- Theme Options (Hidden by default, shown on hover/focus of parent) -->
+    <div class="flex flex-col gap-2 mb-2 translate-y-10 opacity-0 invisible group-hover:translate-y-0 group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out">
+        <button 
+            data-set-theme="growth"
+            class="px-4 py-3 bg-white hover:bg-blue-50 text-gray-800 rounded-xl shadow-xl shadow-blue-900/10 flex items-center gap-3 border border-gray-100 transition-all hover:-translate-x-1"
+            aria-label="Select Online Growth Theme">
+            <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white text-xs font-bold">Pro</div>
+            <div class="text-left">
+                <div class="text-sm font-bold">Online Growth</div>
+                <div class="text-[10px] text-gray-500">Professional SaaS</div>
+            </div>
+        </button>
+
+        <button 
+            data-set-theme="social"
+            class="px-4 py-3 bg-white hover:bg-orange-50 text-gray-800 rounded-xl shadow-xl shadow-orange-900/10 flex items-center gap-3 border border-gray-100 transition-all hover:-translate-x-1"
+            aria-label="Select Social Commerce Theme">
+            <div class="w-8 h-8 rounded-lg bg-orange-600 flex items-center justify-center text-white text-xs font-bold">Soc</div>
+            <div class="text-left">
+                <div class="text-sm font-bold">Social Boost</div>
+                <div class="text-[10px] text-gray-500">High Energy</div>
+            </div>
+        </button>
+
+        <button 
+            data-set-theme="premium"
+            class="px-4 py-3 bg-white hover:bg-emerald-50 text-gray-800 rounded-xl shadow-xl shadow-emerald-900/10 flex items-center gap-3 border border-gray-100 transition-all hover:-translate-x-1"
+            aria-label="Select Premium Brand Theme">
+            <div class="w-8 h-8 rounded-lg bg-emerald-700 flex items-center justify-center text-white text-xs font-bold serif">Pre</div>
+            <div class="text-left">
+                <div class="text-sm font-bold">Premium Brand</div>
+                <div class="text-[10px] text-gray-500">Sophisticated</div>
+            </div>
+        </button>
+    </div>
+
+    <!-- Main Toggle Button -->
+    <button class="bg-[var(--brand-primary)] text-white p-4 rounded-full shadow-xl hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center w-14 h-14" aria-label="Change Theme">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-palette"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+    </button>
+</div>
+
+<script>
+    const themeButtons = document.querySelectorAll('[data-set-theme]');
+    const htmlObj = document.documentElement;
+    const mainBtn = document.querySelector('button[aria-label="Change Theme"]');
+    const menu = document.querySelector('.group > div');
+
+    // Mobile Toggle
+    mainBtn?.addEventListener('click', (e) => {
+        // Toggle visibility classes manually for click support
+        const wrapper = mainBtn.parentElement;
+        wrapper?.classList.toggle('mobile-active');
+    });
+
+    // Close on click outside
+    document.addEventListener('click', (e) => {
+        const wrapper = document.querySelector('.group');
+        if (!wrapper?.contains(e.target as Node)) {
+            wrapper?.classList.remove('mobile-active');
+        }
+    });
+
+    themeButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const newTheme = btn.getAttribute('data-set-theme');
+            
+            // Update DOM - Always set the attribute so specific selectors work
+            htmlObj.setAttribute('data-theme', newTheme);
+            
+            // Persist
+            localStorage.setItem('theme', newTheme);
+        });
+    });
+</script>
+
+<style>
+    /* Mobile Active State Support */
+    .mobile-active > div {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+</style>

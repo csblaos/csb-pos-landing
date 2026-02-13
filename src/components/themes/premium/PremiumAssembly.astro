@@ -1,0 +1,30 @@
+---
+import PremiumHero from './PremiumHero.astro';
+import PremiumFeatures from './PremiumFeatures.astro';
+import PremiumPricing from './PremiumPricing.astro';
+import PremiumPainSolutions from './PremiumPainSolutions.astro';
+import PremiumFooterCTA from './PremiumFooterCTA.astro';
+---
+
+<div class="font-prompt bg-[#fafaf9] min-h-screen text-[#1c1917]">
+    <!-- Minimalist Nav -->
+    <nav class="absolute top-0 w-full z-40 py-8 px-12 flex justify-between items-center border-b border-[#e7e5e4]">
+        <div class="text-xl font-serif font-bold tracking-widest text-[#1c1917]">
+            SAAS POS.
+        </div>
+        <button class="text-xs font-bold uppercase tracking-[0.2em] hover:text-[#ca8a04] transition-colors">
+            Client Login
+        </button>
+    </nav>
+
+    <PremiumHero />
+    <PremiumPainSolutions />
+    <PremiumFeatures />
+    <PremiumPricing />
+    <PremiumFooterCTA />
+
+    <footer class="bg-white border-t border-[#e7e5e4] py-16 text-center">
+        <div class="text-[#ca8a04] font-serif text-2xl italic mb-4">SaaS POS</div>
+        <p class="text-[#a8a29e] text-xs uppercase tracking-widest">© 2024. All Rights Reserved.</p>
+    </footer>
+</div>
